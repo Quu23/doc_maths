@@ -1,0 +1,9 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{ascmac}
+\usepackage{amsthm}
+% \usepackage[dvipdfmx]{hyperref}
+\begin{document}
+
+\end{document}
