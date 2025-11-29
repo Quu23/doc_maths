@@ -1,3 +1,7 @@
+# Created by https://www.toptal.com/developers/gitignore/api/tex
+# Edit at https://www.toptal.com/developers/gitignore?templates=tex
+
+### TeX ###
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -26,9 +30,7 @@
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
-*.bbl-SAVE-ERROR
 *.bcf
-*.bcf-SAVE-ERROR
 *.blg
 *-blx.aux
 *-blx.bib
@@ -41,8 +43,6 @@
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
-*.rubbercache
-rubber.cache
 
 ## Build tool directories for auxiliary files
 # latexrun
@@ -141,9 +141,6 @@ acs-*.bib
 *.lg
 *.trc
 *.xref
-
-# hypdoc
-*.hd
 
 # hyperref
 *.brf
@@ -306,3 +303,15 @@ TSWLatexianTemp*
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
+
+### TeX Patch ###
+# LIPIcs / OASIcs
+*.vtc
+
+# glossaries
+*.glstex
+.vscode
+
+\reports
+
+# End of https://www.toptal.com/developers/gitignore/api/tex
