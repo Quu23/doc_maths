@@ -217,6 +217,9 @@ INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth10.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmss12.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
 INPUT out/diff_geo1.aux
 INPUT out/diff_geo1.out
 INPUT out/diff_geo1.out

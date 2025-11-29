@@ -1,11 +1,11 @@
 # Fdb version 4
-["dvipdf"] 1764336827.88054 "out/diff_geo1.dvi" "out/diff_geo1.pdf" "out/diff_geo1" 1764336828.6985 0
-  "out/diff_geo1.dvi" 1764336827 24816 286302687245a7c795497d3cdf5eae3a "latex"
+["dvipdf"] 1764386330.35025 "out/diff_geo1.dvi" "out/diff_geo1.pdf" "out/diff_geo1" 1764386331.25893 0
+  "out/diff_geo1.dvi" 1764386330 48424 fe75d3050bb0efdd0da4a24c227e91d5 "latex"
   (generated)
   "out/diff_geo1.pdf"
   (rewritten before read)
-["latex"] 1764336825.86683 "c:/myFolder/doc_maths/diff_geo1.tex" "out/diff_geo1.dvi" "diff_geo1" 1764336828.69254 0
-  "c:/myFolder/doc_maths/diff_geo1.tex" 1764336824 15399 c1c71609b4575fe9f20723cf654f3fcd ""
+["latex"] 1764386328.28943 "c:/myFolder/doc_maths/diff_geo1.tex" "out/diff_geo1.dvi" "diff_geo1" 1764386331.25348 0
+  "c:/myFolder/doc_maths/diff_geo1.tex" 1764386327 30205 b6b9f770e1dd78ef952b0f3711845973 ""
   "c:/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1761841468 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm" 1761862739 468 53f854284f6afa6c36aaa2d1090ecc12 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/ptex-fonts/jis/jisg.tfm" 1761862739 468 53f854284f6afa6c36aaa2d1090ecc12 ""
@@ -107,10 +107,10 @@
   "c:/texlive/2025/texmf-dist/web2c/texmf.cnf" 1761836833 42213 4e2ca030e8e2640502016e9e45868dcb ""
   "c:/texlive/2025/texmf-var/web2c/euptex/platex.fmt" 1761868851 3633279 43a435808e21f2608eb50d4526410da2 ""
   "c:/texlive/2025/texmf.cnf" 1761868620 713 e69b156964470283e0530f5060668171 ""
-  "diff_geo1.tex" 1764336824 15399 c1c71609b4575fe9f20723cf654f3fcd ""
+  "diff_geo1.tex" 1764386327 30205 b6b9f770e1dd78ef952b0f3711845973 ""
   "img/diff_geo1/surface_axis.png" 1764332043 32648 8210ef7f62e4767ab63a9a84e3630e29 ""
-  "out/diff_geo1.aux" 1764336827 905 70b42fb0048f58f91cf8442451674de9 "latex"
-  "out/diff_geo1.out" 1764336827 446 b534da9d59e84da790b0dbd1d252466b "latex"
+  "out/diff_geo1.aux" 1764386330 1401 2191a7e2b553451f484fb98076d81b25 "latex"
+  "out/diff_geo1.out" 1764386330 613 6b15ff0bff0b80bb5e1c8afee0a4dcff "latex"
   (generated)
   "out/diff_geo1.aux"
   "out/diff_geo1.dvi"
