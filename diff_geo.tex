@@ -25,14 +25,14 @@
             \bm{p}(u,v) = (x(u,v), y(u,v), z(u,v))
         \end{equation}
         なるようにかける. (本来なら列ベクトルにする.) ここで, $u,v$がパラメータで, $x,y,z$が三階連続微分可能な関数である.
-        先ほどの曲面片となるための条件を式でかけば
+        これが曲面片となるための条件を式でかけば
         \begin{equation}
             \rank \begin{bmatrix}
                 x_u & y_u & z_u \\
                 x_v & y_v & z_v
             \end{bmatrix} = 2
         \end{equation}
-        ということになる. これはつまり, 曲面の接ベクトルが互いに一次独立であるということで, これにより接平面が張れることが保証されている.
+        ということになる. これはつまり, 曲面の接ベクトル$\bm{p}_u,\bm{p}_v$が互いに一次独立であるということで, これにより接平面が張れることが保証されている.
 
         曲面上の十分近い二点の微小な変位ベクトル$d\bm{p}$は
         \begin{equation}
@@ -50,7 +50,7 @@
         \begin{equation}
             \bm{e}=\frac{\bm{p}_u\times\bm{p}_v}{|\bm{p}_u\times\bm{p}_v|}
         \end{equation}
-        これより, 曲面の\textbf{第二基本形式}は以下で与えられる.
+        これより, 曲面の\textbf{第二基本形式}は以下で定義される.
         \begin{equation}
             \mathrm{II} = -d\bm{e}\cdot d\bm{p}
         \end{equation}
@@ -58,7 +58,7 @@
         \begin{equation}
             \mathrm{II}=Ldu^2+2Mdudv+Ndv^2
         \end{equation}
-        ただし, $L=\bm{e}\cdot \bm{p}_{uu},M=\bm{e}\cdot \bm{p}_{uv}, N=\bm{e}\cdot \bm{p}_{vv}$である. この二次形式の対称行列はある種Hesse行列に対応しているから,
+        ただし, $L=\bm{e}\cdot \bm{p}_{uu},M=\bm{e}\cdot \bm{p}_{uv}, N=\bm{e}\cdot \bm{p}_{vv}$である. この二次形式の対称行列はある意味Hesse行列に対応しているから,
         第二基本形式が曲面の見た目(形が凸など)を表している.
 
         曲面の第一基本形式と第二基本形式を用いれば, 次のように\textbf{Gauss曲率}が定義できる.
@@ -70,12 +70,12 @@
             H=\frac{1}{2}\frac{EN+GL-2FM}{EG-F^2}
         \end{equation}
         この二つの量は, 実際には, 次のような流れで登場した. 曲面上の曲線$\bm{p}(s)=\bm{p}(u(s),v(s))$において, その加速度ベクトル$\bm{p}''(s)$は, 
-        曲面の接ベクトル(接平面上のベクトル)$\bm{k_g}$と, 法線方向のベクトル$\bm{k_n}$を用いて次のように書けた.
+        曲面の接ベクトル(接平面上のベクトル)$\bm{k_g}$と, 法線方向のベクトル$\bm{k_n}$を用いて次のように分解できた.
         \begin{equation}
             \bm{p}''(s)=\bm{k_g}+\bm{k_n}
         \end{equation}
         ここで, $s$は曲線の弧長パラメータであり, $\bm{k_g},\bm{k_n}$はそれぞれ, 測地的曲率ベクトル, 法曲率ベクトルという. このうち, 法曲率ベクトルについて, 
-        $\bm{k_n}=\kappa_n\bm{e}$と書いておく. すると, 次の式が得られる.
+        $\bm{k_n}=\kappa_n\bm{e}$と書いておく. すると, 少し式変形を行って次の式が得られる.
         \begin{equation}
             \kappa_n = L\left(\frac{du}{ds}\right)^2 + 2M\left(\frac{du}{ds}\right)\left(\frac{dv}{ds}\right)+N\left(\frac{dv}{ds}\right)^2
         \end{equation}
@@ -90,7 +90,7 @@
         以下に, 具体的な曲面のGauss曲率と平均曲率を示す.(計算略)
 
         \begin{enumerate}
-            \item 球面
+            \item 半径$a$の球面
                 \begin{align}
                     \bm{p}(u,v) &= (a\cos u\cos v, a\cos u\sin v, a\sin u)\\
                     \mathrm{I}&=a^2du^2+a^2\cos^2udv^2\\
@@ -112,231 +112,231 @@
         \end{enumerate}
     \clearpage
         
-    \clearpage
-    \section{接ベクトル場}
-        まず接ベクトルについて改めて考えておく. そのための手がかりとして, 曲面上の曲線を考え, その速度ベクトルを考えてみることにする.
+    % \clearpage
+    % \section{接ベクトル場}
+    %     まず接ベクトルについて改めて考えておく. そのための手がかりとして, 曲面上の曲線を考え, その速度ベクトルを考えてみることにする.
 
-        さらりと``曲線''と言ってしまったが, まず曲面上の曲線とはどのようなものなのだろうか. まずは曲面上の曲線について考えてみよう. 曲面を$M$として, 次の写像を考えてみる.
-        \begin{equation}
-            c:[-\varepsilon,\varepsilon]\to M \quad (\varepsilon\in \mathrm{R}, \varepsilon > 0)
-        \end{equation}
-        これは, パラメータ($t$とかいておく)を一つ決めると, 曲面$M$上の一点が決まる写像である. その一点を$c(t)$と書くことにする. これだけだと, $t$の値に対してとびとびの点$c(t)$を取りうる可能性も
-        ある(むしろそれが一般的)であるが, ここでは常識的な, 点が``連続的''に変化しているものとする. そうすると, $c$の像は連続的な点の集まりだから曲線といえなくもない. 
+    %     さらりと``曲線''と言ってしまったが, まず曲面上の曲線とはどのようなものなのだろうか. まずは曲面上の曲線について考えてみよう. 曲面を$M$として, 次の写像を考えてみる.
+    %     \begin{equation}
+    %         c:[-\varepsilon,\varepsilon]\to M \quad (\varepsilon\in \mathrm{R}, \varepsilon > 0)
+    %     \end{equation}
+    %     これは, パラメータ($t$とかいておく)を一つ決めると, 曲面$M$上の一点が決まる写像である. その一点を$c(t)$と書くことにする. これだけだと, $t$の値に対してとびとびの点$c(t)$を取りうる可能性も
+    %     ある(むしろそれが一般的)であるが, ここでは常識的な, 点が``連続的''に変化しているものとする. そうすると, $c$の像は連続的な点の集まりだから曲線といえなくもない. 
 
-        ではつぎにこの曲線$c$の速度ベクトルなるものを考えたい. 速度といえば微分であるから, この曲線を微分することを考えたい. しかし, 一般の写像の場合の微分は定義していない. 実際微分の定義を形式的に当てはめようとすると
-        \begin{equation*}
-            \lim_{\Delta t\to 0} \frac{c(t+\Delta t)-c(t)}{\Delta t}
-        \end{equation*}
-        を計算することになるが, 分子は$M$の点であって, これらの加法は一般に定義されていないのだから, 微分しようにもそもそも定義できない.
+    %     ではつぎにこの曲線$c$の速度ベクトルなるものを考えたい. 速度といえば微分であるから, この曲線を微分することを考えたい. しかし, 一般の写像の場合の微分は定義していない. 実際微分の定義を形式的に当てはめようとすると
+    %     \begin{equation*}
+    %         \lim_{\Delta t\to 0} \frac{c(t+\Delta t)-c(t)}{\Delta t}
+    %     \end{equation*}
+    %     を計算することになるが, 分子は$M$の点であって, これらの加法は一般に定義されていないのだから, 微分しようにもそもそも定義できない.
 
-        そこで, $M$の点を数としてみなせれば, 微分が計算できて都合がよいということがわかる. 曲面上の点を数値で表すということは, 曲面に座標を導入するということであるが, 後のことを考えて
-        曲面がEuclid空間にないとして考えておく. すると通常あるはずの座標軸の値で点を表すわけにもいかない. そこで, 曲面の表面に座標を張ることを考える.
-        しかし, 現実の曲面を想像すればわかるように, 曲面上に座標格子を広げようにも, それだけで曲面全体を覆うことはできないし, 逆に軸同士などがぶつかってしまうこともある. 例えば球であれば, 球面上のある点から座標軸を伸ばしていくと一周して元の場所に戻ってしまい
-        軸それ自身とぶつかってしまう. しかし, 曲面上のある点と, そのごくごく小さいその周囲(これを\textbf{近傍}という)だけであれば, 座標軸がぶつかることはないだろう. また, 曲面上の各点に対してその近傍を考えることで, 近傍全体の和集合が曲面を包んでいることもわかる.
+    %     そこで, $M$の点を数としてみなせれば, 微分が計算できて都合がよいということがわかる. 曲面上の点を数値で表すということは, 曲面に座標を導入するということであるが, 後のことを考えて
+    %     曲面がEuclid空間にないとして考えておく. すると通常あるはずの座標軸の値で点を表すわけにもいかない. そこで, 曲面の表面に座標を張ることを考える.
+    %     しかし, 現実の曲面を想像すればわかるように, 曲面上に座標格子を広げようにも, それだけで曲面全体を覆うことはできないし, 逆に軸同士などがぶつかってしまうこともある. 例えば球であれば, 球面上のある点から座標軸を伸ばしていくと一周して元の場所に戻ってしまい
+    %     軸それ自身とぶつかってしまう. しかし, 曲面上のある点と, そのごくごく小さいその周囲(これを\textbf{近傍}という)だけであれば, 座標軸がぶつかることはないだろう. また, 曲面上の各点に対してその近傍を考えることで, 近傍全体の和集合が曲面を包んでいることもわかる.
 
-        細かい条件は無視して, 今は単に曲面の局所的な部分で座標を張っていると考えておく. これを局所座標という. なお, このような座標が張れる集合を\textbf{多様体}という. 曲面はこの多様体のうち, 座標軸が二本の二次元多様体と呼ばれるものにあたる.
-        \begin{figure}[h]
-            \centering
-            \includegraphics[scale=0.5]{img/diff_geo1/surface_axis.png}
-            \caption{局所座標}
-        \end{figure}
+    %     細かい条件は無視して, 今は単に曲面の局所的な部分で座標を張っていると考えておく. これを局所座標という. なお, このような座標が張れる集合を\textbf{多様体}という. 曲面はこの多様体のうち, 座標軸が二本の二次元多様体と呼ばれるものにあたる.
+    %     \begin{figure}[h]
+    %         \centering
+    %         \includegraphics[scale=0.5]{img/diff_geo1/surface_axis.png}
+    %         \caption{局所座標}
+    %     \end{figure}
         
-        さて, 局所座標を定義したことにより曲線の速度ベクトルが定義できるようになった. まず, $M$の点$p$の局所座標を$(u,v)$とかくことにしよう. つまり, $p\in M$を$p=(u,v)$のように書くのであって, これより, 曲線は$c(t)=(u(t),v(t))$と書ける. これより, $t=0$における速度ベクトルは
-        \begin{equation}
-            \left.\frac{dc}{dt}\right|_{t=0}=\left(\frac{du}{dt}(0),\frac{dv}{dt}(0)\right)
-        \end{equation}
-        として定義される...と言いたいところだが, 実はそうではない. こう定義してしまうと, 局所座標系$(u,v)$の取り方によって速度ベクトルが変わってしまう. 速度ベクトルは局所座標によらないように定義したい.
+    %     さて, 局所座標を定義したことにより曲線の速度ベクトルが定義できるようになった. まず, $M$の点$p$の局所座標を$(u,v)$とかくことにしよう. つまり, $p\in M$を$p=(u,v)$のように書くのであって, これより, 曲線は$c(t)=(u(t),v(t))$と書ける. これより, $t=0$における速度ベクトルは
+    %     \begin{equation}
+    %         \left.\frac{dc}{dt}\right|_{t=0}=\left(\frac{du}{dt}(0),\frac{dv}{dt}(0)\right)
+    %     \end{equation}
+    %     として定義される...と言いたいところだが, 実はそうではない. こう定義してしまうと, 局所座標系$(u,v)$の取り方によって速度ベクトルが変わってしまう. 速度ベクトルは局所座標によらないように定義したい.
         
-        そこで次のように考える.
-        \begin{itembox}[l]{速度ベクトルの定義}
-            曲線$c$の$t=0$における\textbf{速度ベクトル}$\bm{v}_c$は, 曲線$c$に沿った\textbf{方向微分そのもの}と考える. すなわち, ある点$p=c(0)$周りで定義された(微分可能性などを持っている)任意の関数$f$に対して
-            \begin{equation}
-                \bm{v}_c(f) = \left.\frac{df(c(t))}{dt}\right|_{t=0}
-            \end{equation}
-            を返す関数$\bm{v}_c:\{\text{関数}\}\to \mathbb{R}$である.
-        \end{itembox}
-        さらに, 方向微分そのものをより抽象的にしよう. すなわち, 方向微分とは微分演算が持つ「線形性」と「Leibniz則」のみを仮定した, 
-        点$p$周りで定義された関数から実数への関数と考えるのである. そのようにすることで, ある点$p$における方向微分全体がベクトル空間となる.(もちろん方向微分同士の加法などは, 自然な意味での加法ととる)
+    %     そこで次のように考える.
+    %     \begin{itembox}[l]{速度ベクトルの定義}
+    %         曲線$c$の$t=0$における\textbf{速度ベクトル}$\bm{v}_c$は, 曲線$c$に沿った\textbf{方向微分そのもの}と考える. すなわち, ある点$p=c(0)$周りで定義された(微分可能性などを持っている)任意の関数$f$に対して
+    %         \begin{equation}
+    %             \bm{v}_c(f) = \left.\frac{df(c(t))}{dt}\right|_{t=0}
+    %         \end{equation}
+    %         を返す関数$\bm{v}_c:\{\text{関数}\}\to \mathbb{R}$である.
+    %     \end{itembox}
+    %     さらに, 方向微分そのものをより抽象的にしよう. すなわち, 方向微分とは微分演算が持つ「線形性」と「Leibniz則」のみを仮定した, 
+    %     点$p$周りで定義された関数から実数への関数と考えるのである. そのようにすることで, ある点$p$における方向微分全体がベクトル空間となる.(もちろん方向微分同士の加法などは, 自然な意味での加法ととる)
 
-        点$p$における方向微分全体を$D_p(M)$と書くことにする. しかし, 方向微分全体はあまりにも範囲が広すぎるから, 実際に我々が必要な接ベクトルだけ考えたい. 
-        つまり方向微分全体の部分空間だけ知っていれば十分である. では, 接ベクトル場はどのように定義するだろうか. 通常の曲面論から類推すると, これはu軸, v軸に沿った速度ベクトルであるとわかる. 
-        座標軸は二本あるから, 接ベクトルとして(線形独立なものは)二つとれるだろう. u軸, v軸に沿った点$p$における接ベクトルをそれぞれ
-        \begin{equation}
-            \left(\frac{\partial}{\partial u}\right)_p,\quad \left(\frac{\partial}{\partial v}\right)_p
-        \end{equation}
-        とかこう. この二つのベクトルによって張られる$D_p(M)$の部分空間を$T_p(M)$と書き, 点$p$における\textbf{接ベクトル空間}という.
-        簡単に言えば, この接ベクトル空間が曲面$M$の接平面にあたる. $T_p(M)$の元を$p$における接ベクトルという. そして, $M$上の各点でそれぞれ(局所座標が通じる限り)u軸, v軸に沿った接ベクトルが定義できるから,
-        それらを集めて$\displaystyle \frac{\partial}{\partial u} = \left\{\left(\frac{\partial}{\partial u}\right)_p\right\}_{p\in U}$のようにかく. $U$は$M$上で局所座標$(u,v)$が張られている範囲.
-        そしてこれを\textbf{接ベクトル場}という.
+    %     点$p$における方向微分全体を$D_p(M)$と書くことにする. しかし, 方向微分全体はあまりにも範囲が広すぎるから, 実際に我々が必要な接ベクトルだけ考えたい. 
+    %     つまり方向微分全体の部分空間だけ知っていれば十分である. では, 接ベクトル場はどのように定義するだろうか. 通常の曲面論から類推すると, これはu軸, v軸に沿った速度ベクトルであるとわかる. 
+    %     座標軸は二本あるから, 接ベクトルとして(線形独立なものは)二つとれるだろう. u軸, v軸に沿った点$p$における接ベクトルをそれぞれ
+    %     \begin{equation}
+    %         \left(\frac{\partial}{\partial u}\right)_p,\quad \left(\frac{\partial}{\partial v}\right)_p
+    %     \end{equation}
+    %     とかこう. この二つのベクトルによって張られる$D_p(M)$の部分空間を$T_p(M)$と書き, 点$p$における\textbf{接ベクトル空間}という.
+    %     簡単に言えば, この接ベクトル空間が曲面$M$の接平面にあたる. $T_p(M)$の元を$p$における接ベクトルという. そして, $M$上の各点でそれぞれ(局所座標が通じる限り)u軸, v軸に沿った接ベクトルが定義できるから,
+    %     それらを集めて$\displaystyle \frac{\partial}{\partial u} = \left\{\left(\frac{\partial}{\partial u}\right)_p\right\}_{p\in U}$のようにかく. $U$は$M$上で局所座標$(u,v)$が張られている範囲.
+    %     そしてこれを\textbf{接ベクトル場}という.
 
-        なお, 速度ベクトル$\bm{v}_c$は接ベクトル, つまり, $\displaystyle\left(\frac{\partial}{\partial u}\right)_p, \left(\frac{\partial}{\partial v}\right)_p$の線形結合で書ける. これは連鎖律の公式を使えばよい.
-    \clearpage
-    \section{微分形式}
-        次に, 微分形式について定義する. そのためにはまず, 接ベクトル空間$T_p(M)$の双対空間を定義しなければならない.
-        接ベクトル空間の元に対してある実数を返す線形写像$\omega:T_p(M)\to \mathbb{R}$は考えられるが, このような関数すべてを集めたものを$T_p^*(M)$とかく. 
-        この集合は, 自然な加法などに対してまたベクトル空間となるから, これを\textbf{双対空間}という. なお, 双対空間自体は任意のベクトル空間に対して考えることができる.
+    %     なお, 速度ベクトル$\bm{v}_c$は接ベクトル, つまり, $\displaystyle\left(\frac{\partial}{\partial u}\right)_p, \left(\frac{\partial}{\partial v}\right)_p$の線形結合で書ける. これは連鎖律の公式を使えばよい.
+    % \clearpage
+    % \section{微分形式}
+    %     次に, 微分形式について定義する. そのためにはまず, 接ベクトル空間$T_p(M)$の双対空間を定義しなければならない.
+    %     接ベクトル空間の元に対してある実数を返す線形写像$\omega:T_p(M)\to \mathbb{R}$は考えられるが, このような関数すべてを集めたものを$T_p^*(M)$とかく. 
+    %     この集合は, 自然な加法などに対してまたベクトル空間となるから, これを\textbf{双対空間}という. なお, 双対空間自体は任意のベクトル空間に対して考えることができる.
 
-        ではこの双対空間$T_p^*(M)$の基底はどのようなものだろうか. 基底の取り方自体はいろいろあるだろうが, ここでは一つの指針として, 次の性質を満たすものを考えたい.
-        \begin{equation}
-            \omega_{i}\left(\frac{\partial}{\partial u_j}\right)_p = \delta_{ij},\quad (i,j=1,2)
-        \end{equation}
-        ただし, $u^1=u,u^2=v$として解釈する. 正確には接ベクトルの外側にもう一度$\omega$の引数としてのかっこが必要であるが, 表記が複雑になるだけなので省略している.
-        このようにして定義された関数$\omega_1,\omega_2$は$T_p^*(M)$の基底となっていることが確かめられる. このような基底を\textbf{双対基底}という. この双対基底をそれぞれ$(du)_p,(dv)_p$
-        とかくことにする. そしてこの$du,dv$の一次結合, $T_p^{*}(M)$の元を\textbf{一次微分形式}(1-form)という.
+    %     ではこの双対空間$T_p^*(M)$の基底はどのようなものだろうか. 基底の取り方自体はいろいろあるだろうが, ここでは一つの指針として, 次の性質を満たすものを考えたい.
+    %     \begin{equation}
+    %         \omega_{i}\left(\frac{\partial}{\partial u_j}\right)_p = \delta_{ij},\quad (i,j=1,2)
+    %     \end{equation}
+    %     ただし, $u^1=u,u^2=v$として解釈する. 正確には接ベクトルの外側にもう一度$\omega$の引数としてのかっこが必要であるが, 表記が複雑になるだけなので省略している.
+    %     このようにして定義された関数$\omega_1,\omega_2$は$T_p^*(M)$の基底となっていることが確かめられる. このような基底を\textbf{双対基底}という. この双対基底をそれぞれ$(du)_p,(dv)_p$
+    %     とかくことにする. そしてこの$du,dv$の一次結合, $T_p^{*}(M)$の元を\textbf{一次微分形式}(1-form)という.
 
-        こうして, 一応一次微分形式自体は定義できたのであるが, これからの議論では二次微分形式まで使う必要がある. ところが, 二次微分形式(一般に$k$次形式)は一次微分形式と
-        は少し勝手が違うので, ここでは単純に次のように書いたもの
-        \begin{equation}
-            f du\wedge dv
-        \end{equation}
-        を二次微分形式と呼ぶことにしよう. つまり, 適当な関数と$du\wedge dv$をかけたものを二次微分形式と呼ぶのである.
-        式中の$\wedge$は一次微分形式(の基底)$du,dv$をかけたもので, 外積(wedge積)とよぶ. 外積については次の規則を約束しておく.
-        \begin{equation}
-            du\wedge du = dv \wedge dv = 0 ,\qquad du\wedge dv= -dv \wedge du
-        \end{equation}
-        なお, いまは$u,v$の二つしか変数がないから二次微分形式までしか考えないのであって, $n$個変数があれば$n$次微分形式まで考えられる. また, 通常の関数は0次微分形式と解釈する.
-        \subsection*{外微分}
-            微分形式には, \textbf{外微分}(がいびぶん)と呼ばれる新たな演算を導入することができる. 外微分を$d$と書くことにすると
+    %     こうして, 一応一次微分形式自体は定義できたのであるが, これからの議論では二次微分形式まで使う必要がある. ところが, 二次微分形式(一般に$k$次形式)は一次微分形式と
+    %     は少し勝手が違うので, ここでは単純に次のように書いたもの
+    %     \begin{equation}
+    %         f du\wedge dv
+    %     \end{equation}
+    %     を二次微分形式と呼ぶことにしよう. つまり, 適当な関数と$du\wedge dv$をかけたものを二次微分形式と呼ぶのである.
+    %     式中の$\wedge$は一次微分形式(の基底)$du,dv$をかけたもので, 外積(wedge積)とよぶ. 外積については次の規則を約束しておく.
+    %     \begin{equation}
+    %         du\wedge du = dv \wedge dv = 0 ,\qquad du\wedge dv= -dv \wedge du
+    %     \end{equation}
+    %     なお, いまは$u,v$の二つしか変数がないから二次微分形式までしか考えないのであって, $n$個変数があれば$n$次微分形式まで考えられる. また, 通常の関数は0次微分形式と解釈する.
+    %     \subsection*{外微分}
+    %         微分形式には, \textbf{外微分}(がいびぶん)と呼ばれる新たな演算を導入することができる. 外微分を$d$と書くことにすると
 
-            0次微分形式$f$には
-            \begin{equation}
-                df = \frac{\partial f}{\partial u}du+\frac{\partial f}{\partial v}dv\label{eq:def,df}
-            \end{equation}
+    %         0次微分形式$f$には
+    %         \begin{equation}
+    %             df = \frac{\partial f}{\partial u}du+\frac{\partial f}{\partial v}dv\label{eq:def,df}
+    %         \end{equation}
 
-            1次微分形式$\phi = fdu+gdv$には
-            \begin{equation}
-                d\phi = df \wedge du +fddu + dg \wedge dv+gddv\label{eq:def,dphi}
-            \end{equation}
+    %         1次微分形式$\phi = fdu+gdv$には
+    %         \begin{equation}
+    %             d\phi = df \wedge du +fddu + dg \wedge dv+gddv\label{eq:def,dphi}
+    %         \end{equation}
             
-            2次微分形式$\psi = fdu\wedge dv$には
-            \begin{equation}
-                d\psi = df \wedge du \wedge dv\label{eq:def,dpsi}
-            \end{equation}
+    %         2次微分形式$\psi = fdu\wedge dv$には
+    %         \begin{equation}
+    %             d\psi = df \wedge du \wedge dv\label{eq:def,dpsi}
+    %         \end{equation}
 
-            と定義する. つまり, 外微分は微分形式の次数を一次だけあげる. ところで, $d\psi$は計算すると$d\psi=0$となることがわかる.
-            これは当然の結果で, 3次以降の微分形式は(変数の数が足りないから)0になるのである.
+    %         と定義する. つまり, 外微分は微分形式の次数を一次だけあげる. ところで, $d\psi$は計算すると$d\psi=0$となることがわかる.
+    %         これは当然の結果で, 3次以降の微分形式は(変数の数が足りないから)0になるのである.
 
-            もう一つ注意しなければならないのは, $dd\theta=0$が常に成り立つということである. $\theta$が1-formか2-formなら当然であるし, 0-form(関数)であっても, 簡単な計算で確かめられる.
+    %         もう一つ注意しなければならないのは, $dd\theta=0$が常に成り立つということである. $\theta$が1-formか2-formなら当然であるし, 0-form(関数)であっても, 簡単な計算で確かめられる.
 
-            したがって, 式\eqref{eq:def,df}$\sim$\eqref{eq:def,dpsi}は, 以下のように言い換えられる.
+    %         したがって, 式\eqref{eq:def,df}$\sim$\eqref{eq:def,dpsi}は, 以下のように言い換えられる.
 
-            \begin{itembox}[l]{外微分}
-                0次微分形式$f$には
-                \begin{equation}
-                    df = \frac{\partial f}{\partial u}du+\frac{\partial f}{\partial v}dv
-                \end{equation}
+    %         \begin{itembox}[l]{外微分}
+    %             0次微分形式$f$には
+    %             \begin{equation}
+    %                 df = \frac{\partial f}{\partial u}du+\frac{\partial f}{\partial v}dv
+    %             \end{equation}
 
-                1次微分形式$\phi = fdu+gdv$には
-                \begin{equation}
-                    d\phi = df \wedge du + dg \wedge dv
-                \end{equation}
+    %             1次微分形式$\phi = fdu+gdv$には
+    %             \begin{equation}
+    %                 d\phi = df \wedge du + dg \wedge dv
+    %             \end{equation}
                 
-                2次微分形式$\psi = fdu\wedge dv$には
-                \begin{equation}
-                    d\psi = 0
-                \end{equation}
-            \end{itembox}
-            逆に, 一次微分形式が$d\phi =0$なら,$\phi = dh$なる関数$h$が存在するか? という疑問も生まれる. これは, $f,g$がある長方形領域で連続微分可能であれば, 存在することが知られており, Poincareの補助定理とよばれる.
-        \subsection*{外微分形式による微分幾何}
-            Riemann幾何の本題に入る前に, 今までのベクトル解析的な曲面論を微分形式を用いて軽く展開してみよう. ひとまず, 曲面の周りに, いったんどこかに取っ払っていたEuclid空間を設置する. 
-            こうすれば位置ベクトルによって, 馴染みの$\bm{p}(u,v)$で曲面がかける.
+    %             2次微分形式$\psi = fdu\wedge dv$には
+    %             \begin{equation}
+    %                 d\psi = 0
+    %             \end{equation}
+    %         \end{itembox}
+    %         逆に, 一次微分形式が$d\phi =0$なら,$\phi = dh$なる関数$h$が存在するか? という疑問も生まれる. これは, $f,g$がある長方形領域で連続微分可能であれば, 存在することが知られており, Poincareの補助定理とよばれる.
+    %     \subsection*{外微分形式による微分幾何}
+    %         Riemann幾何の本題に入る前に, 今までのベクトル解析的な曲面論を微分形式を用いて軽く展開してみよう. ひとまず, 曲面の周りに, いったんどこかに取っ払っていたEuclid空間を設置する. 
+    %         こうすれば位置ベクトルによって, 馴染みの$\bm{p}(u,v)$で曲面がかける.
 
-            まず, 接ベクトルとして, $\bm{p}_u,\bm{p}_v$の代わりに, 正規直交基底として$\bm{e}_1,\bm{e}_2$を取り直す. 実際, Gram-Schmitの正規直交化をつかえば, このような基底は取れる.(ただし, いつもこの方法で基底を取ってあるとは限らない.)
-            次に$\bm{e}_3$を$\bm{e}_1\times \bm{e}_2$として定義する. このようにして, $\bm{p}_u,\bm{p}_v,\bm{e}$の代わりに, 正規直交標構を用いることが可能になった. これによれば, 曲面上の任意の接ベクトル$d\bm{p}=(dx,dy,dz)$を
-            \begin{equation}
-                d\bm{p} = \theta^1 \bm{e}_1 + \theta^2 \bm{e}_2 
-            \end{equation}
-            と書ける. ただし, $\theta^1,\theta^2$は一次微分形式. あるいは, Einsteinの縮約より$d\bm{p}=\theta^i\bm{e}_{i}$と書いてもよいだろう. また, $dd\bm{p}=\bm{0}$であるから
-            \begin{equation}
-                \bm{0} = d(\theta^i\bm{e}_i) = d\theta^i \bm{e}_i - \theta^i\wedge d\bm{e}_i
-            \end{equation}
-            が得られる. ところが, $d\bm{e}_i$はやはり空間のベクトルであるから, $\bm{e}_1,\bm{e}_2,\bm{e}_3$の線形結合で書けるはずである. これを
-            \begin{equation}
-                d\bm{e}_i = \omega_i^\mu \bm{e}_\mu \quad (i=1\sim {\color{red}3})
-            \end{equation}
-            とかいておく. $\omega_i^j (i,j=1\sim3)$は一次微分形式である. ただし, $\mu$に関する和は$1\sim 3$までの和としてとる. (以下このノートでは, アルファベットによる添え字は$1\sim2$, ギリシャ文字による添え字は$1\sim 3$までを表すことにする.) したがって
-            \begin{equation}
-                \bm{0} = d\theta^i \bm{e}_i - \theta^i\wedge\omega_i^\mu \bm{e}_\mu
-            \end{equation}
-            とかけるから, $\bm{e}_i$の線形独立性より
-            \begin{align}
-                d\theta^{i} &= \theta^j\wedge\omega_j^i, \quad (i=1,2) \label{eq:kozosiki1_suf}\\ 
-                0 &= \theta^j\wedge\omega_j^3 \label{eq:kozosiki_omake}
-            \end{align}
-            が得られる. \eqref{eq:kozosiki1_suf}を\textbf{第一構造式}という.
+    %         まず, 接ベクトルとして, $\bm{p}_u,\bm{p}_v$の代わりに, 正規直交基底として$\bm{e}_1,\bm{e}_2$を取り直す. 実際, Gram-Schmitの正規直交化をつかえば, このような基底は取れる.(ただし, いつもこの方法で基底を取ってあるとは限らない.)
+    %         次に$\bm{e}_3$を$\bm{e}_1\times \bm{e}_2$として定義する. このようにして, $\bm{p}_u,\bm{p}_v,\bm{e}$の代わりに, 正規直交標構を用いることが可能になった. これによれば, 曲面上の任意の接ベクトル$d\bm{p}=(dx,dy,dz)$を
+    %         \begin{equation}
+    %             d\bm{p} = \theta^1 \bm{e}_1 + \theta^2 \bm{e}_2 
+    %         \end{equation}
+    %         と書ける. ただし, $\theta^1,\theta^2$は一次微分形式. あるいは, Einsteinの縮約より$d\bm{p}=\theta^i\bm{e}_{i}$と書いてもよいだろう. また, $dd\bm{p}=\bm{0}$であるから
+    %         \begin{equation}
+    %             \bm{0} = d(\theta^i\bm{e}_i) = d\theta^i \bm{e}_i - \theta^i\wedge d\bm{e}_i
+    %         \end{equation}
+    %         が得られる. ところが, $d\bm{e}_i$はやはり空間のベクトルであるから, $\bm{e}_1,\bm{e}_2,\bm{e}_3$の線形結合で書けるはずである. これを
+    %         \begin{equation}
+    %             d\bm{e}_i = \omega_i^\mu \bm{e}_\mu \quad (i=1\sim {\color{red}3})
+    %         \end{equation}
+    %         とかいておく. $\omega_i^j (i,j=1\sim3)$は一次微分形式である. ただし, $\mu$に関する和は$1\sim 3$までの和としてとる. (以下このノートでは, アルファベットによる添え字は$1\sim2$, ギリシャ文字による添え字は$1\sim 3$までを表すことにする.) したがって
+    %         \begin{equation}
+    %             \bm{0} = d\theta^i \bm{e}_i - \theta^i\wedge\omega_i^\mu \bm{e}_\mu
+    %         \end{equation}
+    %         とかけるから, $\bm{e}_i$の線形独立性より
+    %         \begin{align}
+    %             d\theta^{i} &= \theta^j\wedge\omega_j^i, \quad (i=1,2) \label{eq:kozosiki1_suf}\\ 
+    %             0 &= \theta^j\wedge\omega_j^3 \label{eq:kozosiki_omake}
+    %         \end{align}
+    %         が得られる. \eqref{eq:kozosiki1_suf}を\textbf{第一構造式}という.
 
-            ところで, $\omega_i^3$は, $du,dv$の一次結合であって, $\theta^1,\theta^2$も$du,dv$の一次結合であった. ゆえに, $\omega_i^3$を$\theta^1,\theta^2$の一次結合と書くこともできる.
-            また, $d(\bm{e}_i\cdot \bm{e}_j)=0$より, $\omega_0^0=\omega_1^1=\omega_2^2=0$であり, $\omega_i^j = -\omega_j^i$であることもわかる. そこで, 
-            \begin{equation}
-                \omega_j^3 = b_{jk}\theta^k,\quad (j=1,2)
-            \end{equation}
-            のようにかくことにすれば, 式\eqref{eq:kozosiki_omake}より
-            \begin{equation}
-                0=(b_{12}-b_{21})\theta^1\wedge\theta^2
-            \end{equation}
-            が得られる. ゆえに, $B=(b_{ij})$は対称行列であることがわかる.
+    %         ところで, $\omega_i^3$は, $du,dv$の一次結合であって, $\theta^1,\theta^2$も$du,dv$の一次結合であった. ゆえに, $\omega_i^3$を$\theta^1,\theta^2$の一次結合と書くこともできる.
+    %         また, $d(\bm{e}_i\cdot \bm{e}_j)=0$より, $\omega_0^0=\omega_1^1=\omega_2^2=0$であり, $\omega_i^j = -\omega_j^i$であることもわかる. そこで, 
+    %         \begin{equation}
+    %             \omega_j^3 = b_{jk}\theta^k,\quad (j=1,2)
+    %         \end{equation}
+    %         のようにかくことにすれば, 式\eqref{eq:kozosiki_omake}より
+    %         \begin{equation}
+    %             0=(b_{12}-b_{21})\theta^1\wedge\theta^2
+    %         \end{equation}
+    %         が得られる. ゆえに, $B=(b_{ij})$は対称行列であることがわかる.
 
-            つぎに, $dd\bm{e}_i=\bm{0}$より, 何か式がえられるか考えてみる. まず, $d\omega_i^\mu = \omega_i^\nu\wedge\omega_\nu^\mu$が得られるから, $i,\mu=1,2$の時で考えてみよう. $\mu$の代わりに, $k$と書くことにする.
-            \begin{align*}
-                d\omega_i^k &= \omega_i^\nu\wedge\omega_\nu^k = \omega_i^j\wedge\omega_j^k + \omega_i^3\wedge\omega_3^k \\
-                &= \omega_i^j\wedge\omega_j^k - b_{it}b_{ks}\theta^t\wedge\theta^s\\
-                &= \omega_i^j\wedge\omega_j^k + \frac{1}{2}\left\{ b_{it}b_{ks} - b_{is}b_{kt}\right\}\theta^s\wedge\theta^t
-            \end{align*}
-            このように変形したのは, $\omega_i^k$が添え字に対して反対称的であるから, 右辺も反対称的な形に合わせるためである. したがって, $i=2,k=1$の場合を調べれば十分である.
-            したがって
-            \begin{equation}
-                d\omega_2^1 = (b_{11}b_{22}-b_{12}b_{21})\theta^1\wedge\theta^2
-            \end{equation}
-            が得られた. ところで, $\theta^1\wedge\theta^2$の前の係数は$\det B$であるから, なにか特別な意味がありそうである. 実際あって, 実はGauss曲率になっている.\footnote{証明はここでは略すが, 次のように考える. まず, $du,dv$から$\theta^1,\theta^2$への線形変換の行列$A$を考えておく. これは少し計算すればわかるように, 正則である. 少々面倒な計算をすると, $S=(L_{ij})$が, $S={}^{T}\!ABA$と書けるとわかるから, $\det B=\det S/\det({}^{T}\!AA)$となる. ここで, $S$は, 第二基本形式を二次形式と見た時の対応する行列である. さらに, ${}^{T}\!AA$は第一基本形式の対応する行列になっているから, Gauss曲率の定義より$\det B=K$となる.}
+    %         つぎに, $dd\bm{e}_i=\bm{0}$より, 何か式がえられるか考えてみる. まず, $d\omega_i^\mu = \omega_i^\nu\wedge\omega_\nu^\mu$が得られるから, $i,\mu=1,2$の時で考えてみよう. $\mu$の代わりに, $k$と書くことにする.
+    %         \begin{align*}
+    %             d\omega_i^k &= \omega_i^\nu\wedge\omega_\nu^k = \omega_i^j\wedge\omega_j^k + \omega_i^3\wedge\omega_3^k \\
+    %             &= \omega_i^j\wedge\omega_j^k - b_{it}b_{ks}\theta^t\wedge\theta^s\\
+    %             &= \omega_i^j\wedge\omega_j^k + \frac{1}{2}\left\{ b_{it}b_{ks} - b_{is}b_{kt}\right\}\theta^s\wedge\theta^t
+    %         \end{align*}
+    %         このように変形したのは, $\omega_i^k$が添え字に対して反対称的であるから, 右辺も反対称的な形に合わせるためである. したがって, $i=2,k=1$の場合を調べれば十分である.
+    %         したがって
+    %         \begin{equation}
+    %             d\omega_2^1 = (b_{11}b_{22}-b_{12}b_{21})\theta^1\wedge\theta^2
+    %         \end{equation}
+    %         が得られた. ところで, $\theta^1\wedge\theta^2$の前の係数は$\det B$であるから, なにか特別な意味がありそうである. 実際あって, 実はGauss曲率になっている.\footnote{証明はここでは略すが, 次のように考える. まず, $du,dv$から$\theta^1,\theta^2$への線形変換の行列$A$を考えておく. これは少し計算すればわかるように, 正則である. 少々面倒な計算をすると, $S=(L_{ij})$が, $S={}^{T}\!ABA$と書けるとわかるから, $\det B=\det S/\det({}^{T}\!AA)$となる. ここで, $S$は, 第二基本形式を二次形式と見た時の対応する行列である. さらに, ${}^{T}\!AA$は第一基本形式の対応する行列になっているから, Gauss曲率の定義より$\det B=K$となる.}
 
-            したがって, 次の\textbf{第二構造式}が得られた.
-            \begin{equation}
-                d\omega_2^1 = K\theta^1\wedge\theta^2
-            \end{equation}
-    \clearpage
-    \section{曲面の構造方程式}
-        さて, ここからは再び外の空間は忘れて, Riemann計量のみから曲面の性質を調べることにしよう.
+    %         したがって, 次の\textbf{第二構造式}が得られた.
+    %         \begin{equation}
+    %             d\omega_2^1 = K\theta^1\wedge\theta^2
+    %         \end{equation}
+    % \clearpage
+    % \section{曲面の構造方程式}
+    %     さて, ここからは再び外の空間は忘れて, Riemann計量のみから曲面の性質を調べることにしよう.
 
-        まず, $ds^2=\theta^1\theta^1+\theta^2\theta^2$と, $D$上一次独立な微分形式$\theta^1,\theta^2$で書き表せるかを考えてみる. これができれば, あとは先ほどの計算と同様に, 曲面について色々調べることができそうである. 
-        これには, $\theta^i = a_j^i du^j$とまず書いておいて, $\theta^1\theta^1+\theta^2\theta^2$を計算して, 式\eqref{eq:Riemann metric}と見比べればよい. そうすれば,
-        \begin{equation}
-            a_1^1 = \sqrt{E},\quad a_{1}^2=0,\quad a_2^1=\frac{F}{\sqrt{E}},\quad a_2^2=\sqrt{\frac{EG-F^2}{E}}
-        \end{equation}
-        と置くことで実現できることがわかる. ただし, 以下は必ずしも上記式のようにおいてるわけではないことに注意しておく.
+    %     まず, $ds^2=\theta^1\theta^1+\theta^2\theta^2$と, $D$上一次独立な微分形式$\theta^1,\theta^2$で書き表せるかを考えてみる. これができれば, あとは先ほどの計算と同様に, 曲面について色々調べることができそうである. 
+    %     これには, $\theta^i = a_j^i du^j$とまず書いておいて, $\theta^1\theta^1+\theta^2\theta^2$を計算して, 式\eqref{eq:Riemann metric}と見比べればよい. そうすれば,
+    %     \begin{equation}
+    %         a_1^1 = \sqrt{E},\quad a_{1}^2=0,\quad a_2^1=\frac{F}{\sqrt{E}},\quad a_2^2=\sqrt{\frac{EG-F^2}{E}}
+    %     \end{equation}
+    %     と置くことで実現できることがわかる. ただし, 以下は必ずしも上記式のようにおいてるわけではないことに注意しておく.
         
-        次に, 曲面の構造式を導入したい. そのためには,
-        \begin{equation}
-            d\theta^i = \theta^j \wedge \omega_{j}^i
-        \end{equation}
-        なる$\omega_2^1=-\omega_1^2$を求めればよい. $\omega_2^1 = b_1\theta^{1}+b_2\theta^{2}$とおいて, 
-        \begin{equation}
-            d\theta^1 = b_1\theta^2\wedge\theta^1,\quad d\theta^2 = b_2\theta^1\wedge\theta^2
-        \end{equation}
-        を満たすような$b_1,b_2$をとればよい. これは一意に定まるから, 第一構造式が成り立つような一次微分形式の交代行列
-        \begin{equation}
-            \omega = \begin{bmatrix}
-                0 & \omega_2^1\\
-                \omega_1^2 & 0
-            \end{bmatrix}
-        \end{equation}
-        が一意に定まることが分かった. これを\textbf{接続形式}という. また, 第二構造式
-        \begin{equation}
-            d\omega_2^1 = K\theta^1\wedge\theta^2
-        \end{equation}
-        よりGauss曲率$K$を\underline{定義する}.
+    %     次に, 曲面の構造式を導入したい. そのためには,
+    %     \begin{equation}
+    %         d\theta^i = \theta^j \wedge \omega_{j}^i
+    %     \end{equation}
+    %     なる$\omega_2^1=-\omega_1^2$を求めればよい. $\omega_2^1 = b_1\theta^{1}+b_2\theta^{2}$とおいて, 
+    %     \begin{equation}
+    %         d\theta^1 = b_1\theta^2\wedge\theta^1,\quad d\theta^2 = b_2\theta^1\wedge\theta^2
+    %     \end{equation}
+    %     を満たすような$b_1,b_2$をとればよい. これは一意に定まるから, 第一構造式が成り立つような一次微分形式の交代行列
+    %     \begin{equation}
+    %         \omega = \begin{bmatrix}
+    %             0 & \omega_2^1\\
+    %             \omega_1^2 & 0
+    %         \end{bmatrix}
+    %     \end{equation}
+    %     が一意に定まることが分かった. これを\textbf{接続形式}という. また, 第二構造式
+    %     \begin{equation}
+    %         d\omega_2^1 = K\theta^1\wedge\theta^2
+    %     \end{equation}
+    %     よりGauss曲率$K$を\underline{定義する}.
 
-        以上で, 第一構造式と第二構造式が作れたから, これによって曲面の解析が可能になった. これ以上になると, おそらく時間がないだろうからひとまずこの辺で話を区切る.
-    \clearpage
-    \section{Riemann計量が内積を定義するとは?}
-        最後に, Riemann計量が内積を定義しているとはどういうことかについて簡単に触れておく. まず, Riemann計量$ds^2$を$ds^2=\theta^1\theta^1+\theta^2\theta^2$と書いておく. 
-        このとき, $\theta^1,\theta^2$に対応する双対なベクトル場$\bm{e}_1,\bm{e}_2$が存在するはずである. この接ベクトルが大きさ1で, たがいに直交するように内積を定めることにする. 実はこの内積は, $\bm{e}_1,\bm{e}_2$の
-        選び方, つまり, $\theta^1,\theta^2$によらないことが証明される. つまり, この内積はRiemann計量$ds^2$のみによって決まる. このようにして, 接ベクトル空間に内積が定義された.
+    %     以上で, 第一構造式と第二構造式が作れたから, これによって曲面の解析が可能になった. これ以上になると, おそらく時間がないだろうからひとまずこの辺で話を区切る.
+    % \clearpage
+    % \section{Riemann計量が内積を定義するとは?}
+    %     最後に, Riemann計量が内積を定義しているとはどういうことかについて簡単に触れておく. まず, Riemann計量$ds^2$を$ds^2=\theta^1\theta^1+\theta^2\theta^2$と書いておく. 
+    %     このとき, $\theta^1,\theta^2$に対応する双対なベクトル場$\bm{e}_1,\bm{e}_2$が存在するはずである. この接ベクトルが大きさ1で, たがいに直交するように内積を定めることにする. 実はこの内積は, $\bm{e}_1,\bm{e}_2$の
+    %     選び方, つまり, $\theta^1,\theta^2$によらないことが証明される. つまり, この内積はRiemann計量$ds^2$のみによって決まる. このようにして, 接ベクトル空間に内積が定義された.
 
-        内積があれば, 接ベクトルの大きさが測れ, したがって, 曲線の長さを定義することができる. 曲線の長さだとかいうのは, 内積があって初めて測れるものであって, 内積がない空間では長さを図る尺度がないので, そもそも定義できないのである.
+    %     内積があれば, 接ベクトルの大きさが測れ, したがって, 曲線の長さを定義することができる. 曲線の長さだとかいうのは, 内積があって初めて測れるものであって, 内積がない空間では長さを図る尺度がないので, そもそも定義できないのである.
 
-        なお, 第一基本形式の各係数は, 以下のように書けることが知られている.
-        \begin{equation}
-            E = \left<\frac{\partial}{\partial u},\frac{\partial}{\partial u}\right>,\quad F = \left<\frac{\partial}{\partial u},\frac{\partial}{\partial v}\right>,\quad G = \left<\frac{\partial}{\partial v},\frac{\partial}{\partial v}\right>
-        \end{equation}
-        ただし, $<\bullet,\bullet>$は先ほど定義した内積を表す. こちらのほうが, $E,F,G$を与えたらu,v軸に沿った接ベクトル(基底)の内積が与えられているようで, ``内積が定義された''実感がわきやすい.
+    %     なお, 第一基本形式の各係数は, 以下のように書けることが知られている.
+    %     \begin{equation}
+    %         E = \left<\frac{\partial}{\partial u},\frac{\partial}{\partial u}\right>,\quad F = \left<\frac{\partial}{\partial u},\frac{\partial}{\partial v}\right>,\quad G = \left<\frac{\partial}{\partial v},\frac{\partial}{\partial v}\right>
+    %     \end{equation}
+    %     ただし, $<\bullet,\bullet>$は先ほど定義した内積を表す. こちらのほうが, $E,F,G$を与えたらu,v軸に沿った接ベクトル(基底)の内積が与えられているようで, ``内積が定義された''実感がわきやすい.
 \end{document}
