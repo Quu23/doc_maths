@@ -1,0 +1,48 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{ascmac}
+\usepackage{amsthm}
+\usepackage{bm}
+% \usepackage[dvipdfmx]{hyperref}
+\begin{document}
+    \part*{第二回 線型代数 問題}
+    \subsection*{問題1}
+        次の問に答える.
+        \begin{enumerate}
+            \item 線型空間$V$の$n$個のベクトル$\bm{v}_1,\cdots,\bm{v}_n$が一次独立であることの定義を述べよ.
+            \item $\bm{v}_1,\cdots,\bm{v}_n$が一次従属であることは, そのうち一つが他の$n-1$個のベクトルの一次結合で書けることと同値であることを示せ.
+            \item ある$\bm{v}\in V$が一次独立な$\bm{v}_1,\cdots,\bm{v}_n$の一次結合として書き表す仕方は高々一通りしかないことを示せ. (高々一通り=表せないか, 表せたらそれは一意)
+        \end{enumerate}
+    \subsection*{問題2}
+        $n$次実正方行列の全体$\bm{M}_n(\mathbb{R})$の次元を求めよ. また基底を求めよ.
+    \subsection*{問題3}
+        $\mathbb{R}^2$について, 次のベクトルを考える.
+        \begin{equation*}
+            \bm{a}_1=\begin{pmatrix}
+                2 \\ 1
+            \end{pmatrix},\quad
+            \bm{a}_2=\begin{pmatrix}
+                1 \\ 1
+            \end{pmatrix},\quad
+            \bm{b}_1=\begin{pmatrix}
+                0 \\ 1
+            \end{pmatrix},\quad
+            \bm{b}_2=\begin{pmatrix}
+                1 \\ 0
+            \end{pmatrix}
+        \end{equation*}
+        この時, $\mathcal{E} = <\bm{a}_1,\bm{a}_2>$および$\mathcal{F} = <\bm{b}_1,\bm{b}_2>$が$\mathbb{R}^2$の基底であることを示し, $\mathcal{E}\to\mathcal{F}$の基底の取り換え行列を求めよ.
+    \subsection*{問題4}
+        線型空間$V$の次の部分集合が$V$の部分空間であることを示せ. ただし, $W_1,W_2$は部分空間とし, $f:V\to V$を線形変換とする.\\
+        (1)$W_1\cap W_2$\quad (2)$W_1+W_2$\quad (3)$\mathrm{Im}f$\quad (4)$\mathrm{Ker}f$
+    \subsection*{問題5}
+        $\mathbb{R}^3$上の線形変換$f:\mathbb{R}^3\to\mathbb{R}^3,\bm{x}\mapsto A\bm{x}$について, 以下の問に答えよ. ただし, $A=\begin{pmatrix}1 & 2 & -1\\0 & 1 & 1\\ 1 & 1 & -2\end{pmatrix}$である.
+        \begin{enumerate}
+            \item $\mathrm{Ker}f$の次元と基底のひとつを求めよ.
+            \item $\mathrm{Im} f$の次元と基底のひとつを求めよ.
+            \item $A$の階数を求めよ.
+        \end{enumerate}
+    \subsection*{問題6}
+        線型空間$V$の$\dim V$個の線形独立な一次ベクトルは$V$の基底であることを示せ.
+\end{document}
