@@ -1,0 +1,147 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{ascmac}
+\usepackage{amsthm}
+\usepackage{bm}
+% \usepackage[dvipdfmx]{hyperref}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\tr}{\mathrm{tr}}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\newcommand{\Ker}{\mathrm{Ker}\hspace{0.5mm}}
+\renewcommand{\Im}{\mathrm{Im}\hspace{0.5mm}}
+
+\begin{document}
+    \part*{第六回 線型代数 問題}
+    \begin{screen}
+        (新潟大学理学部R5)4×4行列
+        \begin{equation*}
+            A=\begin{pmatrix}
+                0 & 0 & 0 & 2\\
+                0 & 2 & 0 & 0\\
+                0 & 0 & 2 & 0\\
+                2 & 0 & 0 & 0
+            \end{pmatrix}
+        \end{equation*}
+        について次の問いに答えよ.
+        \begin{enumerate}
+            \item $A$の行列式の値を求めよ.
+            \item $A$の固有値を全て求めよ.
+            \item $A$の各固有値に対する固有空間の基底を求めよ.
+            \item $P^{-1}AP$が対角行列となる正則行列$P$を求め, $A$を対角化せよ. ただし, $A$が対角化できない場合は, その理由を説明せよ.
+            \item 自然数$n$に対して, $A^n$を求めよ.
+        \end{enumerate}
+    \end{screen}
+    \clearpage
+    \begin{screen}
+        (新潟大学理学部R4)$f,g$を$\R^m$から$\R^n$への線形写像とする. $\R^m$から$\R^n$への写像$h$を
+        \begin{equation*}
+            h(\bm{x})=f(\bm{x})+g(\bm{x})\quad (\bm{x}\in \R^m)
+        \end{equation*}
+        により定める. このとき, 次の問いに答えよ.
+        \begin{enumerate}
+            \item $h$が$\R^m$から$\R^n$への線形写像となることを示せ.
+            \item $\dim\Im h\leq \dim\Im f + \dim\Im g$を示せ.
+            \item $A,B$を実数を成分とする$n\times m$行列とする. このとき$\rank(A+B)\leq\rank A+\rank B$を示せ.
+        \end{enumerate}
+    \end{screen}
+    \clearpage
+    \begin{screen}
+        (筑波大学理工学群数学類R7)実数を成分とする$n$次正方行列全体からなる集合$M_n(\R)$を行列の和とスカラー倍を演算とする$\R$上のベクトル空間とみなす. 行列$A=(a_{ij})\in M_n(\R)$
+        のトレース$\tr A$は, $A$の対角成分の総和として
+        \begin{equation*}
+            \tr A = \sum_{i=1}^{n}a_{ii}
+        \end{equation*}
+        で定まる. 以下の問に答えよ.
+        \begin{enumerate}
+            \item $(i,j)$成分が1で他のすべての成分が0であるような$n$次正方行列を$E_{ij}$で表す. $n^2$この行列$E_{ij}\hspace{1mm}(1\leq i,j\leq n)$は$M_n(\R)$の基底であることを示せ.
+            \item 写像$f:M_n(\R)\to \R$を$f(A)=\tr A$で定める. このとき$f$は線形写像であることを示せ.
+            \item $M_n(\R)$の部分集合$V$を
+            \begin{equation*}
+                V=\{A\in M_n(\R)\mid \tr A=0\}
+            \end{equation*}
+            と定める. このとき, $V$は$M_n(\R)$の部分ベクトル空間であることを示し, その次元$\dim V$を求めよ.
+            \item 正則行列$P\in M_n(\R)$に対して, $M_n(\R)$の部分空間$W$を
+            \begin{equation*}
+                W=\{A\in M_n(\R)\mid \tr (P^{-1}AP)=0\}
+            \end{equation*}
+            で定める. このとき, $W$は$M_n(\R)$の部分ベクトル空間であることを示し, その次元$\dim W$を求めよ.
+        \end{enumerate}
+    \end{screen}
+    \clearpage
+    \begin{screen}
+        (九州大学工学部H25) $n$次正方行列$A=(a_{ij})$は, どの行についても$\sum_{j=1}^{n}a_{ij}=1$とする. 以下の問に答えよ.
+        \begin{enumerate}
+            \item 1は$A$の固有値であることを示せ.
+            \item 2は$2A$の固有値であることを示せ.
+            \item 行列$B=\begin{pmatrix}
+                0 & 1 & 1\\
+                1 & 0 & 1\\
+                1 & 1 & 0
+            \end{pmatrix}$の固有値と固有ベクトルを求めよ.
+            \item $B$が対角化可能か判定せよ.
+        \end{enumerate}
+    \end{screen}
+    \clearpage
+    \begin{screen}
+        (筑波大学理工学群数学類R5)
+        \begin{equation*}
+            V=\{f\mid\text{fは$\R$上無限回微分可能な実数値関数}\}
+        \end{equation*}
+        とする. $V$の元$f,g$の和$f+g$, 及び実数$\alpha$に関するスカラー倍$\alpha f$を
+        \begin{align*}
+            (f+g)(x)&=f(x)+g(x)\quad (x\in\R)\\
+            (\alpha f)(x)&=\alpha f(x)\quad (x\in\R)
+        \end{align*}
+        で定めることにより$V$を$\R$上のベクトル空間とみなす. 写像$F:V\to V$を$F(f)=f'''-7f''+16f'-12f$により定める. また, $V$の元$f_1,f_2,f_3$を
+        $f_1(x)=e^{2x},f_2(x)=xe^{2x},f_3(x)=e^{3x}$により定める.
+        \begin{enumerate}
+            \item $F$は線形写像であることを示せ.
+            \item $f_1,f_2,f_3$は$\Ker F$に含まれることを示せ.
+            \item $f_1,f_2,f_3$は一次独立であることを示せ.
+            \item 写像$G:\Ker f\to \R^3$を
+            \begin{equation*}
+                G(f)=\begin{pmatrix}
+                    f(0)\\f'(0)\\f''(0)
+                \end{pmatrix}
+            \end{equation*}
+            によって定める. $G$は全射な線形写像であることを示せ.
+        \end{enumerate}
+    \end{screen}
+    \clearpage
+    \begin{screen}
+        (島根大学数理情報システム学科数理系H28)4次実正方行列$B$のすべての固有値が0であるとする. このとき, 次の問いに答えよ.
+        \begin{enumerate}
+            \item $B^4$は零行列であることを示せ.
+        \end{enumerate}
+        4次実列ベクトル全体からなるベクトル空間を$\R^4$とする. $c\in\R^4$は$B^3\bm{c}\neq0$を満たすとし, $P=[\bm{c} \hspace{1mm} B\bm{c} \hspace{1mm} B^2\bm{c} \hspace{1mm} B^3\bm{c}]$を$\bm{c} , B\bm{c} ,B^2\bm{c} , B^3\bm{c}$を
+        それぞれ第1, 第2, 第3, 第4列にもつ4次実正方行列とする.
+        \begin{enumerate}\setcounter{enumi}{1}
+            \item $\bm{c} , B\bm{c} ,B^2\bm{c} , B^3\bm{c}$は$\R^4$の基底であることを示せ.
+            \item $P$は正則行列であることを示し, $P^{-1}BP$を求めよ.
+        \end{enumerate}
+    \end{screen}
+    \clearpage
+    \begin{screen}
+        (神戸大学工学部R6) $\bm{u}_1,\bm{u}_2,\bm{u}_3\in\R^3$とする. 次の命題(1),(2),(3)が正しければ証明し, 正しくなければ反例を示せ.
+        \begin{enumerate}
+            \item $\bm{u}_1,\bm{u}_2,\bm{u}_3$が一次独立ならば$\bm{u}_1+\bm{u}_2,\bm{u}_2+\bm{u}_3,\bm{u}_3+\bm{u}_1$は一次独立である.
+            \item $\bm{u}_1$と$\bm{u}_2$, $\bm{u}_2$と$\bm{u}_3$, $\bm{u}_3$と$\bm{u}_1$,がそれぞれ一次独立ならば, $\bm{u}_1,\bm{u}_2,\bm{u}_3$は一次独立.
+            \item $\bm{u}_1,\bm{u}_2,\bm{u}_3$が一次独立であり, かつ$\bm{u}\in\mathbb{R}^3$が$\bm{u}_1,\bm{u}_2,\bm{u}_3$がいずれとも異なるならば, $\bm{u}_1-\bm{u},\bm{u}_2-\bm{u},\bm{u}_3-\bm{u}$は一次独立.
+        \end{enumerate}
+    \end{screen}
+    \clearpage
+    \begin{screen}
+        (金沢大学理工学域R5)$4\times 4$行列$A$を, $A=\begin{pmatrix}
+            1 & -3 & 2 & 0\\2 & 0 & 1 & 3\\ 3& 1 & 1 & 5\\0& 2 & -1 & 1
+        \end{pmatrix}$
+        とし, 線形写像$f:\R^4\to\R^4$を, $f(\bm{x})=A\bm{x},x\in\R^4$と定める.次の問に答えよ.
+        \begin{enumerate}
+            \item $A$の階数$\rank A$を求めよ.
+            \item $f$の像$\Im(f)$の基底を一組求めよ.
+            \item $2\times 4$行列$B$で, $\rank B=2$かつ$BA=O$ ($O$は$2\times 4$零行列)となる$B$を一つ求めよ.
+        \end{enumerate}
+    \end{screen}
+\end{document}
