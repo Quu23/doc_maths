@@ -4,89 +4,53 @@
 \usepackage{ascmac}
 \usepackage{amsthm}
 \usepackage{bm}
+
+\usepackage[margin=10truemm]{geometry}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\Ker}{\mathrm{Ker}\hspace{0.5mm}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\renewcommand{\Im}{\mathrm{Im}\hspace{0.5mm}}
 % \usepackage[dvipdfmx]{hyperref}
 \begin{document}
     \part*{第三回 線型代数 問題}
     \subsection*{問題1}
-        次のベクトルが一次独立か一次従属かを判定する.
-        \begin{equation*}
-            \begin{pmatrix}1 \\ 2 \\ 3 \end{pmatrix}, \begin{pmatrix}3 \\ 4 \\ 3 \end{pmatrix}, \begin{pmatrix}9 \\ 2 \\ 15 \end{pmatrix}
-        \end{equation*}
+        $(m,n)$型行列$A$の階数ははじめ「基本変形で標準形に変形した時, 対角線上に並ぶ1の数」と定義されたが, これと同値な4つの条件を答えよ.
     \subsection*{問題2}
-        次の連立一次方程式をとく.
-        \begin{equation*}
-            (1)\left\{\begin{array}{c}
-                x+2y+3z=4\\
-                3x+y+4z=0\\
-                -2x+3y+z=1
-            \end{array}\right.\quad 
-            (2)\left\{\begin{array}{c}
-                3y+3z-2w=0\\
-                x+y+2z+3w=0\\
-                x+2x+3z+2w=0\\
-                x+3y+4z+2w=0
-            \end{array}\right.
-        \end{equation*}
+        写像$f:M_n(\R)\to\R, A\mapsto\tr A$と定める. このとき, 次の問いに答えよ.
+        \begin{enumerate}
+            \item $f$が線形写像であることを示せ.
+            \item $\Im f$を求めよ.
+            \item $\Ker f$の次元を求めよ. 
+        \end{enumerate}
     \subsection*{問題3}
-        次の行列式を計算する.
-        \begin{equation*}
-            (1)\begin{vmatrix}
-                1 & 2 & 3 \\
-                4 & 5 & 6\\
-                7 & 8 & 9
-            \end{vmatrix}\quad
-            (2)\begin{vmatrix}
-                3 & -5 & 2 & 10\\
-                2 & 0 & 1 & -3\\
-                -2 & 3 & 5 & 2\\
-                4 & -2 & -3 & 2
-            \end{vmatrix}\quad
-            (3)\begin{vmatrix}
-                2 & 100 & 65 & 98765421 & 15\\
-                0 & 8 & 23 & 15 & 31\\
-                0 & 0 & 314 & 2 & 99\\
-                0 & 0 & 0 & 0.625 & -1\\
-                0 & 0 & 0 & 0 &  5
-            \end{vmatrix}
-        \end{equation*}
+        2次以下の実係数多項式空間$P_2(\R)$の線形変換$T,S$を
+        \begin{align*}
+            (Tf)(x)&=\int_{-1}^{1}(x-t)^2f(t)dt\\
+            (Sf)(x)&=e^{x}\frac{d}{dx}(e^{-x}f(x))
+        \end{align*}
+        によって定義することができる. 基底$<1,x,x^2>$に関する$T,S$の表現行列を求めよ.
     \subsection*{問題4}
-        次の行列の積を計算する. ただし, $\bm{a},\bm{b},\bm{c}\in \mathbb{R}^3$
-        \begin{equation*}
-            (1)\begin{pmatrix}
-                1 & -2 & 3\\
-                2 & 1 & 0
-            \end{pmatrix}
-            \begin{pmatrix}
-                -2 & -1 & 1\\
-                1 & 2 & -3\\
-                4 & 0 & 3
-            \end{pmatrix}\quad 
-            (2)\begin{pmatrix}
-                1 & -1 & 0 & 0\\
-                0 & -2 & 0 & 0\\
-                0 & 0  & -2 & 3\\
-                0 & 0  & 1 & 1
-            \end{pmatrix}
-            \begin{pmatrix}
-                2 & 1 & 0 & 0\\
-                0 & 1 & 0 & 0\\
-                0 & 0  & 1 & 1\\
-                0 & 0  & 2 & -3
-            \end{pmatrix}\quad
-            (3)\begin{pmatrix}
-                \bm{a} & \bm{b} & \bm{c}
-            \end{pmatrix}
-            \begin{pmatrix}
-                x\\
-                y\\
-                z
-            \end{pmatrix}
-        \end{equation*}
+        $A=\begin{pmatrix}-1 & -5 & -1\\2 & 4 & 0\\-4 & -8 & 0\end{pmatrix}$とするとき, $\R^3$の元$\bm{x}$に$A\bm{x}$を対応させる写像を$T_A$とする.
+        \begin{enumerate}
+            \item $T_A$が$\R^3$の線形変換であることを示せ.
+            \item $\F = <\begin{pmatrix}1\\-1\\2\end{pmatrix},\begin{pmatrix}3\\-2\\4\end{pmatrix},\begin{pmatrix}2\\-1\\3\end{pmatrix}>$が$\R^3$の基底であることを示せ.
+            \item $\E_0 = <\begin{pmatrix}1\\0\\0\end{pmatrix},\begin{pmatrix}0\\1\\0\end{pmatrix},\begin{pmatrix}0\\0\\1\end{pmatrix}>$とする. このとき, $\E_0\to\F$の基底の取替行列$P$を求めよ.
+            \item $\F$に関する$T_A$の表現行列を求めよ.
+        \end{enumerate}
     \subsection*{問題5}
-        次の命題を示せ.
-        \begin{equation*}
-            (1)A\subset A \quad (2)A\cap B\subset A
-        \end{equation*}
-    \subsection*{問題6}
-        写像$f:\mathbb{R}\to\mathbb{R}, x\mapsto 2x+1$は全単射であることを(定義より)示せ.
+        数列空間$V=\{(x_n)\mid x_{n+2}-3x_{n+1}+2x_{n}=0\}$について, 以下の問に答えよ. ただし, 和を$(a_n)+(b_n)=(a_n+b_n)$, スカラー倍を$\lambda (a_n)=(\lambda a_n)$と定める.
+        \begin{enumerate}
+            \item 項をずらす写像$f:V\to V,(x_{n})\mapsto (x_{n+1})$は線形写像であることを示せ.
+            \item $x_0=1,x_1=0$である数列を$\bm{e}_0$とし, $x_0=0,x_1=1$である数列を$\bm{e}_1$とする. この時, $\E=<\bm{e}_0,\bm{e}_1>$が基底であることを示せ.
+            \item $x_0=0,x_1=1$である数列を$\bm{f}_0$とし, $x_0=1,x_1=2$である数列を$\bm{f}_1$とする. この時, $\F=<\bm{f}_0,\bm{f}_1>$が基底であることを示せ.
+            \item $\E\to\F$への基底の取替え行列$P$を求めよ.
+            \item $f$の$\F$に関する表現行列を求めよ.
+            \item 漸化式$x_{n+2}-3x_{n+1}+2x_{n}=0$の一般解を求めよ.
+        \end{enumerate}
+
 \end{document}
