@@ -56,7 +56,7 @@
         \end{equation*}
         で定まる. 以下の問に答えよ.
         \begin{enumerate}
-            \item $(i,j)$成分が1で他のすべての成分が0であるような$n$次正方行列を$E_{ij}$で表す. $n^2$この行列$E_{ij}\hspace{1mm}(1\leq i,j\leq n)$は$M_n(\R)$の基底であることを示せ.
+            \item $(i,j)$成分が1で他のすべての成分が0であるような$n$次正方行列を$E_{ij}$で表す. $n^2$個の行列$E_{ij}\hspace{1mm}(1\leq i,j\leq n)$は$M_n(\R)$の基底であることを示せ.
             \item 写像$f:M_n(\R)\to \R$を$f(A)=\tr A$で定める. このとき$f$は線形写像であることを示せ.
             \item $M_n(\R)$の部分集合$V$を
             \begin{equation*}
@@ -142,6 +142,46 @@
             \item $A$の階数$\rank A$を求めよ.
             \item $f$の像$\Im(f)$の基底を一組求めよ.
             \item $2\times 4$行列$B$で, $\rank B=2$かつ$BA=O$ ($O$は$2\times 4$零行列)となる$B$を一つ求めよ.
+        \end{enumerate}
+    \end{screen}
+    \clearpage
+    \begin{screen}
+        (東北大学数学科R5) 線形写像 $T: \mathbb{R}^3 \to \mathbb{R}^4$ を
+        \[
+        T \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} -x + y + 2z \\ x + y + z \\ x + 3y + 4z \\ 2x + 4y + 5z \end{pmatrix}
+        \]
+        により定める．以下の問いに答えよ．
+        \begin{enumerate}
+            \item 実線形空間 $\operatorname{Ker}(T) = \{ \bm{x} \in \mathbb{R}^3 \mid T\bm{x} = \bm{0} \}$ の次元と一組の基底を求めよ．
+            \item 実線形空間 $\operatorname{Im}(T) = \{ T\bm{x} \mid \bm{x} \in \mathbb{R}^3 \}$ の次元と一組の基底を求めよ．
+        \end{enumerate}
+    \end{screen}
+    \clearpage
+    \begin{screen}
+        (信州大学数学科2019)$n$ を自然数とする。すべての成分が 1 であるような $n$ 次元列ベクトルを $\boldsymbol{u} \in \mathbb{R}^n$ とする。$A, B, C$ を実数成分の $n$ 次正方行列とする。
+        \begin{enumerate}
+            \item 行列 $A$ が逆行列を持つとする。このとき、$A\boldsymbol{v} = \boldsymbol{u}$ を満たすベクトル $\boldsymbol{v} \in \mathbb{R}^n$ が存在することを証明せよ。
+            
+            \item $B\boldsymbol{v} = \boldsymbol{u}$ を満たすベクトル $\boldsymbol{v} \in \mathbb{R}^n$ がただ一つだけ存在するとする。このとき $B$ は逆行列を持つことを証明せよ。
+            
+            \item $C\boldsymbol{v} = \boldsymbol{u}$ を満たすベクトル $\boldsymbol{v} = \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix} \in \mathbb{R}^n$ および ${}^tC\boldsymbol{w} = \boldsymbol{u}$ を満たすベクトル $\boldsymbol{w} = \begin{pmatrix} w_1 \\ \vdots \\ w_n \end{pmatrix} \in \mathbb{R}^n$ が存在するとする。ここで ${}^tC$ は $C$ の転置行列である。このとき $\boldsymbol{v}$ および $\boldsymbol{w}$ の成分の和が一致すること、すなわち
+            \[
+            \sum_{i=1}^n v_i = \sum_{i=1}^n w_i
+            \]
+            であることを証明せよ。
+        \end{enumerate}
+    \end{screen}
+    \clearpage
+    \begin{screen}
+        (金沢大学数学科H19)4次元ユークリッド空間 $\mathbb{R}^4$ の部分ベクトル空間 $V$ を
+        \[
+        V = \{ (x, y, z, w) \in \mathbb{R}^4 \mid x + y + z + w = 0, \, x + 2y + 2z + 3w = 0 \}
+        \]
+        で定義する。
+
+        \begin{enumerate}
+            \item $V$ の基底を一つ求めよ。
+            \item $V$ の正規直交基底を一つ求めよ。
         \end{enumerate}
     \end{screen}
 \end{document}
