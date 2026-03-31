@@ -1,0 +1,371 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{ascmac}
+\usepackage{amsthm}
+\usepackage{bm}
+
+% \usepackage[margin=10truemm]{geometry}
+
+\DeclareMathOperator{\Span}{span}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\Ker}{\mathrm{Ker}\hspace{0.5mm}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\trans}{{}^t}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\renewcommand{\Im}{\mathrm{Im}\hspace{0.5mm}}
+\newcommand{\Slash}{\hrulefill 演習問題中にあったもの \hrulefill}
+
+\usepackage{enumitem}
+\setlist[itemize]{before=\normalfont}
+
+% 定理スタイルの設定
+\newtheoremstyle{mystyle}% スタイル名
+  {}% 上部スペース
+  {}% 下部スペース
+  {\normalfont}% 本文フォント（斜体。立体が良い場合は \normalfont）
+  {}% インデント量
+  {\bfseries}% 見出しフォント
+  {.}% 見出し後の記号
+  { }% 見出し後のスペース
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}% 見出しの書式
+
+\theoremstyle{mystyle}
+
+% 1. definition: 番号なし（通し番号をなくす）
+\newtheorem*{definition}{定義}
+
+% 2. theorem と proposition: 番号を共有し、セクションごとにリセット
+% [section] をつけることで 5.1, 5.2 の形式になります
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+
+% 3. 性質: 番号なし
+\newtheorem*{property}{性質}
+
+\begin{document}
+\part*{線型代数ゼミ 要点}
+\begin{itembox}{記号について}
+    Review 以外は「定義(Def)」「定理(Thm)」「命題(Prop)」の形式でまとめた. 通し番号はゼミ資料と同じものである. ただし, 「性質」はゼミ資料に明示しているか否かによらず, 「定義」「定理」「命題」のどれにも含まれていないかつ大事なものを入れた. また定義は, ゼミ資料中に直接「Def」と書かれていないものでも入っている.
+\end{itembox}
+\section{Review}
+    ここは, 高専で習っていない範囲のみを扱う.
+    \begin{enumerate}
+        \item 行列をブロック分割することで, 見通しがよくなることがある. 例えば, 
+        \begin{equation*}
+            \begin{pmatrix}
+                A & B \\ C & D
+            \end{pmatrix}
+            \begin{pmatrix}
+                F & G \\ H & K
+            \end{pmatrix} = 
+            \begin{pmatrix}
+                AF+BH & AG+BK \\ CF+DH & CG+DK
+            \end{pmatrix}
+        \end{equation*}
+        ただし, $A,B,C,D,F,G,H,K$は行列で, 各々の積が定義できるとする.
+        \item $A\bm{e}_i$は$A$の$i$番目の列ベクトル. $\trans\bm{e}_i A$は$A$の$i$番目の行ベクトル.
+        \item 行基本変形は, 「正則行列を左から書けること」である.
+        \item 二つの正方行列$A,B$が掃除であるとは, ある正則行列$P$を用いて$P^{-1}AP=B$とできること.
+        \item 集合$X,Y$について, $X\subset Y$とは任意の$x\in X$が$x\in Y$を満たすことをいう. $X=Y$とは$X\subset Y$かつ$Y\subset X$である.
+        \item 和集合$A\cup B = \{x\mid x\in A または x\in B\}$, 共通部分$A\cap B = \{x\mid x\in A かつ x\in B\}$
+        \item $f:X\to Y$が写像とは, 「任意の$X$の元に対してある$Y$の元がただ一つに定まる対応」のこと. 二つの$f,g$ が等しいのは, 任意の$x\in X$に対し$f(x)=g(x)$が成立すること.
+        \item $A\subset X$として, 像$f(A)=\{f(x)\mid x\in A\}$.
+        \item $B\subset Y$として, 逆像$f^{-1}(B)=\{x\in X\mid f(x)\in B\}$.
+        \item $f$が単射とは, 任意の$x,y\in X$に対し, 「$x\neq y\rightarrow f(x)\neq f(y)$」が成り立つこと.
+        \item $f$が全射とは, 任意の$y\in Y$に対し, ある$x\in X$があって, $y=f(x)$となること.
+    \end{enumerate}
+\clearpage
+\section{線形空間}
+    \begin{definition}
+        $V$が$\K$上の\textbf{線形空間}(ベクトル空間)とは
+        \begin{enumerate}\renewcommand{\labelenumi}{(\Roman{enumi})}
+            \item $\bm{x},\bm{y}\in V$に対し, 和$\bm{x}+\bm{y}\in V$が定まり
+            \begin{enumerate}\renewcommand{\labelenumii}{(\arabic{enumii})}
+                \item $(\bm{x}+\bm{y})+\bm{z}=\bm{x}+(\bm{y}+\bm{z})$
+                \item $\bm{x}+\bm{y}=\bm{y}+\bm{x}$
+                \item $\exists\bm{0}\in V,\forall \bm{x}\in V, \bm{x}+\bm{0}=\bm{x}$
+                \item $\forall\bm{x}\in V,\exists\bm{x}'\in V, \bm{x}+\bm{x}'=\bm{0}$
+            \end{enumerate}
+            \item $\bm{x}\in V,a\in\K$に対し, スカラー倍$a\bm{x}\in V$が定まり
+            \begin{enumerate}\setcounter{enumii}{4}\renewcommand{\labelenumii}{(\arabic{enumii})}
+                \item $(a+b)\bm{x}=a\bm{x}+b\bm{x}$
+                \item $a(\bm{x}+\bm{y})=a\bm{x}+a\bm{y}$
+                \item $(ab)\bm{x}=a(b\bm{x})$
+                \item $1\bm{x}=\bm{x}$
+            \end{enumerate}
+        \end{enumerate}
+    \end{definition}
+    \begin{definition}
+        $\K$上の線形空間$V,V'$に対し, $T:V\to V'$として
+        \begin{equation*}
+            T(\bm{x}+\bm{y}), T(a\bm{x})=aT(\bm{x})\quad (a\in\K,\bm{x},\bm{y}\in V)
+        \end{equation*}
+        を満たすとき, $T$を$V$から$V'$への\textbf{線形写像}という.
+    \end{definition}
+    \begin{definition}
+        $\varphi:V\to V'$が線形写像かつ全単射なら, $V$から$V'$への\textbf{同型写像}という. もし同型写像が存在すれば, $V,V'$は互いに\textbf{同型}といい, $V\simeq V'$とかく.
+    \end{definition}
+    以下, 特に明記しない限り, $V$を$\K$上の線形空間とする.
+    \begin{definition}
+        $V$のベクトル$\bm{a}_1,\dots,\bm{a}_n$に対し
+        \begin{equation*}
+            c_1\bm{a}_1+\cdots+c_n\bm{a}_n\quad (c_i\in\K)
+        \end{equation*}
+        を$\bm{a}_1,\dots,\bm{a}_n$の\textbf{一次結合}という. また, 
+        \begin{equation*}
+            c_1\bm{a}_1+\cdots+c_n\bm{a}_n=\bm{0}
+        \end{equation*}
+        なる$\bm{a}_1,\dots,\bm{a}_n$の関係を\textbf{一次関係}という. 
+    \end{definition}
+    \begin{property}
+        $\bm{a}_1,\dots,\bm{a}_n$の間には少なくとも一つは一次関係が存在する. それは$c_1=\cdots=c_n=0$なるときの関係(\textbf{自明な一次関係}).
+    \end{property}
+    \begin{definition}
+        $\bm{a}_1,\dots,\bm{a}_n$の間に自明でない一次関係が存在するとき\textbf{一次従属}といい, 存在しないとき\textbf{一次独立}という.
+    \end{definition}
+    \begin{property} 
+        一次独立・従属の性質.
+        \begin{enumerate}
+            \item $\bm{a}_1,\dots,\bm{a}_n$が一次従属であることと, $\bm{a}_1,\dots,\bm{a}_n$のうちある一つのベクトルが他の$n-1$個のベクトルの一次結合でかけることは同値.
+            \item $\bm{a}_1,\dots,\bm{a}_n$が一次独立で, $\bm{a}$が$\bm{a}_1,\dots,\bm{a}_n$の一次結合でかけなければ, $\bm{a}_1,\dots,\bm{a}_n,\bm{a}$は一次独立.
+            \item $\bm{c}$が$\bm{b}_1,\dots,\bm{b}_l$の一次結合で, 各$\bm{b}_i$が$\bm{a}_1,\dots,\bm{a}_k$の一次結合なら, $\bm{c}$も$\bm{a}_1,\dots,\bm{a}_k$の一次結合.
+        \end{enumerate}
+    \end{property}
+    \clearpage
+    \begin{definition}
+        $V$に有限個のベクトルがあって, $V$の任意のベクトルがこれら有限個のベクトルの一次結合でかけるとき, $V$を\textbf{有限次元}という. 有限次元でないとき\textbf{無限次元}という. (基本的には有限次元を仮定.)
+    \end{definition}
+    \begin{definition}
+        $V$の有限個のベクトル$\bm{e}_1\dots,\bm{e}_n$が次の二条件を満たすとき, \textbf{基底}という.
+        \begin{enumerate}
+            \item $\bm{e}_1\dots,\bm{e}_n$は一次独立.
+            \item $V$の任意の元は, $\bm{e}_1\dots,\bm{e}_n$の一次結合でかける.
+        \end{enumerate}
+    \end{definition}
+    \begin{property}
+        $V$の元を$\bm{e}_1\dots,\bm{e}_n$の一次結合で表したとき, その各$\bm{e}_i$の係数は一意に定まる.
+    \end{property}
+    \begin{proposition}
+        $\K^n$において$n$個より多くのベクトルは一次従属.
+    \end{proposition}
+    \begin{property}
+        $V$が$n$個の基底を持てば, $V\simeq\K^n$
+    \end{property}
+    \begin{definition}
+        $V$の基底が含むベクトルの数を\textbf{次元}といい, $\dim V$とかく. $V=\{\bm{0}\}$のときは$\dim V=0$とする.
+    \end{definition}
+    \begin{property}
+        次元についての諸性質.
+        \begin{itemize}
+            \item $\dim V$より多いベクトルの組は必ず一次従属.
+            \item 次元が等しいベクトル空間は互いに同型.
+        \end{itemize}
+    \end{property}
+    \begin{property}
+        $m\times n$行列$A\in M_{nm}(\K)$の解空間$\{\bm{x}\mid A\bm{x}=\bm{0}\}$の次元は$n-\rank A$.
+    \end{property}
+    \begin{definition}
+        ベクトル空間$V$の二つの基底$\E=<\bm{e}_1,\dots,\bm{e}_n>,\F=<\bm{f}_1,\dots,\bm{f}_n>$について, $\E\to\F$の\textbf{基底の取り換え行列}$P$は以下で定義される.
+        \begin{equation*}
+            (\bm{f}_1,\dots,\bm{f}_n)=(\bm{e}_1,\dots,\bm{e}_n)P
+        \end{equation*}
+        もしくは次のように定義してもよい. $V$の任意の元を$\E,\F$それぞれの基底で表したときの各係数を縦に並べたもの$\trans(x_1,\dots,x_n),\trans(y_1,\dots,y_n)$について
+        \begin{equation*}
+            \begin{pmatrix}
+                x_1\\\vdots\\x_n
+            \end{pmatrix}
+            = P
+            \begin{pmatrix}
+                y_1\\\vdots\\y_n
+            \end{pmatrix}
+        \end{equation*}
+    \end{definition}
+    \begin{definition}
+        $\K$上の$V$の部分集合$W$が同じ演算で$\K$上の線形空間となるとき, $W$を$V$の\textbf{(線形)部分空間}という.
+    \end{definition}
+    \begin{property}
+        $W$が部分空間である必要十分条件は, 次の三つである.
+        \begin{enumerate}
+            \item $W\neq \varnothing$.
+            \item $\bm{x},\bm{y}\in W\rightarrow \bm{x}+\bm{y}\in W$.
+            \item $\bm{x}\in W,c\in \K\rightarrow c\bm{x}\in W$.
+        \end{enumerate}
+    \end{property}
+    \begin{proposition}
+        $W_1,W_2$が$V$の部分空間なら, $W_1\cap W_2$も部分空間.
+    \end{proposition}
+    \begin{definition}
+        空でない$V$の部分\underline{集合}$S\subset V$に対し,
+        \begin{equation*}
+            \Span(S) = \{c_1\bm{x}_1+\cdots+c_{k}\bm{x_k}\mid c_i\in\K,\bm{x}_i\in S\}
+        \end{equation*}
+        は$V$の部分空間. これを\textbf{$S$によって張られる(生成される)部分空間}という.
+    \end{definition}
+    \clearpage
+    \begin{proposition}
+        $W_1,W_2$(部分空間)に対して
+        \begin{equation*}
+            W_1+W_2=\{\bm{x}_1+\bm{x}_2\mid \bm{x}_1\in W_1,\bm{x}_2\in W_2\}
+        \end{equation*}
+        を$W_1,W_2$の\textbf{和空間}という. これは部分空間である.
+    \end{proposition}
+    \begin{definition}
+        $f:V\to V'$を線形写像とする. $f$の\textbf{像}を$\Im f=f(V)$とかく. また, $f$の\textbf{核}を$\Ker f = f^{-1}(\{\bm{0}\})$とかく. これらも部分空間である.
+    \end{definition}
+    \begin{theorem}[次元定理]
+        $f:V\to V'$を線形写像とする. このとき次が成り立つ.
+        \begin{equation*}
+            \dim V=\dim \Im f+\dim\Ker f
+        \end{equation*}
+    \end{theorem}
+    \begin{proposition}
+        $W_1,W_2$が$V$の部分空間なら
+        \begin{enumerate}
+            \item $W_1\subset W_2\rightarrow \dim W_1\leq \dim W_2$
+            \item $W_1\subset W_2$かつ$\dim W_1=\dim W_2\rightarrow W_1=W_2$
+        \end{enumerate}
+    \end{proposition}
+    \Slash
+    \begin{property}
+        $\Im f$の基底は, $V$の基底$\bm{e}_1,\dots,\bm{e}_n$を$f$で飛ばした$f(\bm{e}_1),\dots,f(\bm{e}_n)$の中にある. よってこの中から一次独立なものを取ればそれは基底.
+    \end{property}
+    \begin{property}
+        線型空間$V$の$\dim V$個の線形独立なベクトルは$V$の基底.
+    \end{property}
+    \clearpage
+\section{線形写像と計量線型空間}
+    \textcolor{red}{注. 以下, 混同の恐れがない限り, ベクトルを太字で書かずにプレーンテキストで書く.}
+    \begin{definition}
+        $V,V'$をベクトル空間, $V$の基底を(対応する同型写像と合わせて)$(\E,\varphi)$, $V'$の基底を$(\E',\varphi')$とする. 線形写像$T:V\to V'$に対して, $T_A=\varphi'\circ T\circ \varphi$は$\K^n\to \K^m$の線形写像. 
+        したがって, ある$n\times m$の行列$A$でかけるから, その行列$A$を$(\E,\varphi),(\E',\varphi')$に関する$T$の\textbf{表現行列}という. これは, 次式で与えられる.
+        \begin{equation*}
+           (Te_1,\dots,Te_n)=(e_1',\dots,e_m')A 
+        \end{equation*}
+        ただし,$\E=<e_1,\dots,e_n>,\E'=<e_1',\dots,e_m'>$. またこれは$V,V'$の$\E,\E'$に対する``成分''に対しては
+        \begin{equation*}
+            \begin{pmatrix}
+               x_1' \\ \vdots \\ x_m' 
+            \end{pmatrix}
+            =A\begin{pmatrix}
+                x_1 \\ \vdots \\ x_n 
+            \end{pmatrix}
+        \end{equation*}
+        とかける.
+    \end{definition}
+    \begin{property}
+        上記の基底とは別に, 基底$\F,\F'$をとり, $\E\to\F$の取り換え行列を$P$, $\E'\to\F'$の取り換え行列を$Q$とする. このとき, $\E',\F'$に関する$T$の表現行列$B$は
+        \begin{equation*}
+            B=Q^{-1}AP
+        \end{equation*}
+    \end{property}
+    \begin{proposition}
+        $V\to V'$の線形写像$T$に対し, $V,V'$の基底を適当に選べば, その表現行列は標準形$\begin{pmatrix}E_{r} & O \\ O\end{pmatrix}$ .
+    \end{proposition}
+    \begin{definition}
+        $T:V\to V'$の\textbf{階数}を$\dim(\Im T)$と定義する.
+    \end{definition}
+    \begin{proposition}
+        $T$の階数は任意の表現行列の階数と等しい.
+    \end{proposition}
+    \begin{proposition}
+        $(m,n)$型行列$A$の階数は$A$の一次独立な列ベクトル(行ベクトル)の最大数に等しい.
+    \end{proposition}
+    \begin{property}
+        $(m,n)$型行列$A$の階数に関する同値な条件.
+        \begin{enumerate}
+            \item $A$を標準形にした時の0でない行の数.
+            \item $A$の0でない小行列式の最大次数.
+            \item $A$によって定まる線形写像$T_A$の$\dim(\Im T_A)$.\footnote{$\Im (T_A)$を単に$\Im(A)$と書くこともある.}
+            \item $A$の一次独立な列ベクトルの最大数.
+            \item $A$の一次独立な行ベクトルの最大数.
+        \end{enumerate}
+    \end{property}
+    \begin{property}
+        $T$が線形変換なら, $\E' = \E$として表現行列は考える. このとき基底の取り換え$\E\to \F$によって表現行列は$B=P^{-1}AP$となる. つまり\underline{線形変換の表現行列は互いに相似}.
+    \end{property}
+    \clearpage
+    \begin{definition}
+        $\K$上の線形空間$V$が次の公理を満たすとき, $V$を\textbf{計量線型空間}という.\\
+        $V$の二元$\bm{x},\bm{y}$に\textbf{内積}と呼ばれる$\K$の元$(\bm{x},\bm{y})$が定まり, 次の性質を満たす.
+        \begin{enumerate}
+            \item $(\bm{x},\bm{y}_1+\bm{y}_2)=(\bm{x},\bm{y}_1)+(\bm{x},\bm{y}_2),\quad (\bm{x}_1+\bm{x}_2,\bm{y})=(\bm{x}_1,\bm{y})+(\bm{x}_2,\bm{y})$
+            \item $(c\bm{x},\bm{y})=c(\bm{x},y),\quad (\bm{x},c\bm{y})=\overline{c}(\bm{x},y)$
+            \item $(\bm{x},\bm{y})=\overline{(\bm{y},\bm{x})}$
+            \item $(\bm{x,x})\geq 0$, 等号は$\bm{x}=\bm{0}$のときに限る.
+        \end{enumerate}
+        $\K=\R$のとき\textbf{実計量空間}, $\K=\C$のとき\textbf{ユニタリ空間}という. $\sqrt{(\bm{x},\bm{x})}$を$\bm{x}$の\textbf{長さ}, \textbf{ノルム}といい, $\|\bm{x}\|$とかく.
+        $(\bm{x},\bm{y})=0$のとき, $\bm{x},\bm{y}$は\textbf{直交する}という.
+    \end{definition}
+    \begin{property}
+        通常の$\K^n$の内積は$(\bm{x},\bm{y})=\trans\bm{x}\overline{\bm{y}}$である. 特に$\K=\R$ならバールはいらない.
+    \end{property}
+    \begin{proposition} 大事な不等式2つ.
+        \begin{enumerate}
+            \item $|(x,y)|\leq \|x\|\|y\|$ \hfill(\textbf{Schwarzの不等式})
+            \item $\|x+y\|\leq \|x\|+\|y\|$ \hfill(\textbf{三角不等式})
+        \end{enumerate}
+    \end{proposition}
+    \begin{proposition}
+        0でない$x_1,\dots,x_k$が互いに直交するなら一次独立.
+    \end{proposition}
+    \begin{definition}
+        計量九九間$V$の$e_1,\dots,e_k$が互いに直交し, かつ大きさが1のとき, それらは\textbf{正規直交系}という. とくに, $V$の基底なら\textbf{正規直交基底}という.
+    \end{definition}
+    \begin{property}[Schmidtの直交化法]
+        基底$a_1,\dots,a_n$から正規直交基底$e_1\dots,e_n$を作る手順は以下のとおりである.
+        \begin{enumerate}
+            \item $\displaystyle e_1=\frac{1}{\|a_1\|} a_1$とおく.
+            \item $i\geq 2$なら
+            \begin{equation*}
+                e_i'=a_i-(a_i,e_1)e_1-\cdots - (a_i,e_{i-1})e_{i-1}
+            \end{equation*}
+            \item $\displaystyle e_i=\frac{1}{\|e_i'\|} e_i'$とする. $i< n$なら再び(2)に戻る.
+        \end{enumerate}
+        このとき, $e_{m}$は$a_1,\dots,a_{m}$の一次結合. ($1\leq m\leq n$)
+    \end{property}
+    \begin{definition}
+        $V,V'$がそれぞれ$\K$上の計量空間で, $\varphi:V\to V'$が同型写像かつ
+        \begin{equation*}
+            (\varphi(x),\varphi(y))=(x,y)
+        \end{equation*}
+        を満たすとき, $\varphi$を$V$から$V'$への\textbf{計量同型写像}という. このような写像が存在するとき, $V,V'$は\textbf{計量同型}という.
+    \end{definition}
+    \begin{property}
+        $V$の基底$\E$が\underline{正規直交基底}なら$\K^n$への自然な同型写像$\varphi$は計量同型写像.
+    \end{property}
+    \begin{proposition}
+        $V$の正規直交基底$\E,\F$に対し, $\E\to\F$の基底の取り換え行列$P$はユニタリ行列. ($\K=\R$なら直交行列)
+    \end{proposition}
+    \begin{definition}
+        ユニタリ[実計量]空間$V\to V$の計量同型写像を$V$の\textbf{ユニタリ変換}[\textbf{直交変換}]という.
+    \end{definition}
+    \begin{proposition}
+        $V$のユニタリ変換$T$の任意の正規直交基底に関する表現行列はユニタリ行列. 逆にある正規直交基底で$T$の表現行列なら$T$はユニタリ変換.
+    \end{proposition}
+    \Slash
+    \begin{property}
+        計量空間$V$の部分空間$W$に対し, $W$のすべての元と直交するような$V$の元全体を$W$の\textbf{直交補空間}といい$W^{\bot}$で表す.
+        \begin{enumerate}
+            \item $W^{\bot}$は$V$の部分空間.
+            \item $V=W\oplus W^{\bot}$, すなわち, $V$は$W$と$W^{\bot}$の直和である. 
+        \end{enumerate}
+        なお一般に, ベクトル空間$V$の部分空間$W_1,W_2$について, $V$が$W_1,W_2$の和空間$W_1+W_2$で, $V$の任意のベクトルの$W_1,W_2$のベクトルの和として表す仕方が一意的であるとき, \textbf{直和}であるという.
+    \end{property}
+    \begin{property}
+        線形写像と一次独立性に関する性質.
+        \begin{enumerate}
+            \item 線形写像$f$が単射であることと$\Ker f=\{\bm{0}\}$が同値である.
+            \item 任意の線形写像$f$について, $f(v_1),\dots,f(v_k)$が一次独立なら$v_1,\dots,v_k$は一次独立である.
+            \item 単射な線形写像$f$については, $v_1,\dots,v_k$が一次独立なら$f(v_1),\dots,f(v_k)$は一次独立である.
+        \end{enumerate}
+    \end{property}
+    \clearpage
+    \section{固有値(計量無し)}
+\end{document}
