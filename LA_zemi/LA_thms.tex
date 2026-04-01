@@ -54,6 +54,9 @@
 \begin{itembox}{記号について}
     Review 以外は「定義(Def)」「定理(Thm)」「命題(Prop)」の形式でまとめた. 通し番号はゼミ資料と同じものである. ただし, 「性質」はゼミ資料に明示しているか否かによらず, 「定義」「定理」「命題」のどれにも含まれていないかつ大事なものを入れた. また定義は, ゼミ資料中に直接「Def」と書かれていないものでも入っている.
 \end{itembox}
+\tableofcontents
+
+\clearpage
 \section{Review}
     ここは, 高専で習っていない範囲のみを扱う.
     \begin{enumerate}
@@ -71,8 +74,9 @@
         \end{equation*}
         ただし, $A,B,C,D,F,G,H,K$は行列で, 各々の積が定義できるとする.
         \item $A\bm{e}_i$は$A$の$i$番目の列ベクトル. $\trans\bm{e}_i A$は$A$の$i$番目の行ベクトル.
-        \item 行基本変形は, 「正則行列を左から書けること」である.
-        \item 二つの正方行列$A,B$が掃除であるとは, ある正則行列$P$を用いて$P^{-1}AP=B$とできること.
+        \item 行基本変形は, 「正則行列を左から掛けること」である.
+        \item 二つの正方行列$A,B$が相似であるとは, ある正則行列$P$を用いて$P^{-1}AP=B$とできること.
+        \item 行列式の定義は$|A|=\sum\limits_{\sigma\in S_{n}} \mathrm{sgn}(\sigma) \hspace{1mm} a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{n\sigma(n)}$
         \item 集合$X,Y$について, $X\subset Y$とは任意の$x\in X$が$x\in Y$を満たすことをいう. $X=Y$とは$X\subset Y$かつ$Y\subset X$である.
         \item 和集合$A\cup B = \{x\mid x\in A または x\in B\}$, 共通部分$A\cap B = \{x\mid x\in A かつ x\in B\}$
         \item $f:X\to Y$が写像とは, 「任意の$X$の元に対してある$Y$の元がただ一つに定まる対応」のこと. 二つの$f,g$ が等しいのは, 任意の$x\in X$に対し$f(x)=g(x)$が成立すること.
@@ -266,7 +270,7 @@
         \end{equation*}
     \end{property}
     \begin{proposition}
-        $V\to V'$の線形写像$T$に対し, $V,V'$の基底を適当に選べば, その表現行列は標準形$\begin{pmatrix}E_{r} & O \\ O\end{pmatrix}$ .
+        $V\to V'$の線形写像$T$に対し, $V,V'$の基底を適当に選べば, その表現行列は標準形$\begin{pmatrix}E_{r} & O \\ O & O\end{pmatrix}$ .
     \end{proposition}
     \begin{definition}
         $T:V\to V'$の\textbf{階数}を$\dim(\Im T)$と定義する.
@@ -316,7 +320,7 @@
         0でない$x_1,\dots,x_k$が互いに直交するなら一次独立.
     \end{proposition}
     \begin{definition}
-        計量九九間$V$の$e_1,\dots,e_k$が互いに直交し, かつ大きさが1のとき, それらは\textbf{正規直交系}という. とくに, $V$の基底なら\textbf{正規直交基底}という.
+        計量空間$V$の$e_1,\dots,e_k$が互いに直交し, かつ大きさが1のとき, それらは\textbf{正規直交系}という. とくに, $V$の基底なら\textbf{正規直交基底}という.
     \end{definition}
     \begin{property}[Schmidtの直交化法]
         基底$a_1,\dots,a_n$から正規直交基底$e_1\dots,e_n$を作る手順は以下のとおりである.
@@ -367,5 +371,197 @@
         \end{enumerate}
     \end{property}
     \clearpage
-    \section{固有値(計量無し)}
+\section{固有値(計量無し)}
+    \begin{definition}
+        $V$を$\K$上のベクトル空間, $T$を$V$の線形変換とする.
+        \begin{equation*}
+            T\bm{x}=\alpha \bm{x}\quad (\alpha\in\K)
+        \end{equation*}
+        なる$\bm{x}\neq\bm{0}$を$T$の\textbf{固有ベクトル}といい, $\alpha$を$T$の\textbf{固有値}という. $\alpha$に対応する固有ベクトル全てに$\bm{0}$を入れた集合$W_\alpha$を$T$の$\alpha$に対する\textbf{固有空間}という. 固有空間は$T$不変である.
+    \end{definition}
+    \begin{definition}
+        $A$が$n$次正方行列のとき, $A$によって決まる\underline{$\C^n$}の線形変換$T_A$の, 固有値, 固有ベクトル, 固有空間をそれぞれ$A$の固有値, 固有ベクトル, 固有空間という.
+    \end{definition}
+    \begin{property}
+        $T$が$\C$上のベクトル空間の線形変換なら, $T$の表現行列$A$の固有値は$T$の固有値.
+    \end{property}
+    \begin{proposition}
+        $T$の相異なる固有値に対する固有ベクトルは一次独立.
+    \end{proposition}
+    \begin{proposition}
+        $\K$上のベクトル空間$V$の線形変換が, 適当な基底に関して対角行列で表現されるためには
+        \begin{equation*}
+            V=W_1\oplus\cdots\oplus W_k
+        \end{equation*}
+        が必要かつ十分である. つまり「固有ベクトルからなる$V$の基底が作れること」が必要かつ十分.
+    \end{proposition}
+    \begin{proposition}
+        $n$次正方行列$A$が適当な正則行列$P$によって\textbf{対角化可能}である必要十分条件は$n$個の一次独立な固有列ベクトルが存在することである. 特に, 一次独立な固有ベクトルを$\bm{p}_1,\cdots,\bm{p}_n$として$P=(\bm{p}_1\cdots\bm{p}_n)$とすると
+        \begin{equation*}
+            P^{-1}AP=\begin{pmatrix}
+                \alpha_1 & 0 & \cdots & 0 \\
+                0 & \alpha_2 & \cdots & 0 \\
+                \vdots & \vdots & \ddots & \vdots \\
+                0 & 0 & \cdots & \alpha_n
+            \end{pmatrix}
+        \end{equation*}
+    \end{proposition}
+    \begin{definition}
+        $A$を$n$次行列とする. $\Phi_A(x)=\det(xE-A)$を$A$の\textbf{特性多項式}, \textbf{固有多項式}という. $\Phi_A(x)=0$を$A$の\textbf{特性方程式}, \textbf{固有方程式}という. 特性方程式の根を$A$の\textbf{特性根}という.
+        $T$の\underline{任意の}表現行列に関する特性多項式, $\cdots$を$T$の\textbf{特性多項式}, $\cdots$という.
+    \end{definition}
+    \begin{property}
+        基底の取り方で$T$の特性多項式は変わらない.
+    \end{property}
+    \begin{property}[代数学の基本定理]
+        複素係数$n$次方程式は重複度込めてちょうど$n$個の解をもつ.
+    \end{property}
+    \begin{proposition}
+        行列$A$(or $\C$上の線形変換$T$)の固有値は, $A$(or $T$)の特性根と一致する.
+    \end{proposition}
+    \begin{proposition}[対角化可能である必要十分条件]
+        行列$A$が対角化可能である必要十分条件は, $A$の各特性根$\alpha$に対する固有空間の次元が$\alpha$の重複度に一致することである. 特に, 特性根がすべて相異なるなら$A$は対角化可能である.
+    \end{proposition}
+    \clearpage
+\section{固有値(計量有り)}
+    \begin{definition}
+        実計量空間$V$の線形変換$T$が, 任意の$\bm{x},\bm{y}\in V$に対し
+        \begin{equation*}
+            (T\bm{x},\bm{y})=(\bm{x},T\bm{y})
+        \end{equation*}
+        なら, $T$を\textbf{対称変換}という.
+    \end{definition}
+    \begin{proposition}
+        $T$が対称変換なら, $V$の任意の正規直交基底に関する$T$の表現行列は, 実対称行列. 逆にある正規直交基底に関する$T$の表現行列が実対称行列なら, $T$は対称変換.
+    \end{proposition}
+    \begin{proposition}
+        対称変換の特性根はすべて実数.
+    \end{proposition}
+    \begin{proposition}
+        実計量空間$V$の対称変換$T$の相異なる固有値を$\beta_1,\dots,\beta_k$, 対応する固有空間を$W_1,\dots,W_k$とすると, $W_1,\dots,W_k$は互いに直交し
+        \begin{equation*}
+            V=W_1\oplus\cdots\oplus W_k
+        \end{equation*}
+    \end{proposition}
+    \begin{proposition}[系]
+        実計量空間$V$の線形変換$T$が適当な正規直交基底に関したい対角行列で表現される必要十分条件は, $T$が対称変換であることである.
+    \end{proposition}
+    \begin{theorem}
+        実正方行列$A$に対し$P^{-1}AP$が対角行列であるような直交行列$P$が存在するためには, $A$が対称行列であることが必要かつ十分である.
+    \end{theorem}
+    \begin{definition}
+        $n$個の変数$x_1,\dots,x_n$に対する実係数斉二次式を\textbf{二次形式}という. 一般式は次で与えられる.
+        \begin{equation*}
+            F(x_1,\cdots,x_n)=\sum_{i,j=1}^{n}a_{ij}x_ix_j,\quad (a_{ij}=a_{ji})
+        \end{equation*}
+        対称行列と列ベクトルを用いれば次のように書ける.
+        \begin{equation*}
+            F(\bm{x})=\trans\bm{x}A\bm{x}
+        \end{equation*}
+    \end{definition}
+    \begin{definition}
+        二次形式は適当な直交行列$P$による変数変換$\bm{x}=P\bm{y}$で次の\textbf{標準形}\footnote{ゼミ資料では係数まで丸め込んで標準形といったが, 固有値は陽に出しておくのが一般的なのでこちらを採用する.}に変形できる.
+        \begin{equation*}
+            F(\bm{x})=G(\bm{y})=\alpha_1y_1^2+\cdots+\alpha_n y_n^2
+        \end{equation*}
+        ただし, $\alpha_1,\dots,\alpha_n$は$A$の固有値.
+    \end{definition}
+    \begin{theorem}[Sylvesterの慣性法則]
+        任意の正則変換によって二次形式を標準形に変形したとき、正の項の数、負の項の数は変換によらず一意に決まる。
+    \end{theorem}
+    \begin{definition}
+        $\bm{0}$でない任意の$\bm{x}$に対し, $f(\bm{x})>0$が成立するとき, 二次形式$f(\bm{x})$は\textbf{正値}であるという.
+    \end{definition}
+    \begin{proposition}
+        $F(\bm{x})$が正値であることと$p=n$ ($A$の固有値がすべて正)は同値.
+    \end{proposition}
+    \begin{proposition}
+        $F(\bm{x})$が$\|\bm{x}\|=1$という条件のものとでとる最大値は, 二次形式を定める行列の固有値の最大値と等しい.
+    \end{proposition}
+    \begin{proposition}
+        二次形式$F(\bm{x})=\trans\bm{x}A\bm{x}$が正値ならば$|A_k|>0\hspace{1mm}(k=1,2,\dots,n)$. 逆も成り立つ. ここで
+        \begin{equation*}
+            A_k=\begin{pmatrix}
+                a_{11} & \cdots & a_{1k} \\
+                \vdots & \ddots & \vdots\\
+                a_{k1} & \cdots & a_{kk}
+            \end{pmatrix}
+        \end{equation*}
+        である.
+    \end{proposition}
+    \begin{theorem}[三角化定理]
+        任意の行列は\textbf{三角化可能}, つまり, ある正則行列$P$をとって
+        \begin{equation*}
+            P^{-1}AP = \begin{pmatrix}
+                \alpha_1 & \multicolumn{3}{c}{\smash{\raisebox{-2.5ex}{\Huge *}}} \\
+                0 & \alpha_2 & & \\
+                \vdots & \vdots & \ddots & \\
+                0 & 0 & \cdots & \alpha_n
+            \end{pmatrix}
+        \end{equation*}
+        とできる. ここで$\alpha_1,\dots,\alpha_n$は$A$の固有値である.
+    \end{theorem}
+    \begin{proposition}
+        任意の正方行列$A$とその固有値を$\alpha_1,\dots,\alpha_n$として, 次が成り立つ.
+        \begin{enumerate}
+            \item $|A|=\alpha_1\alpha_2\cdots\alpha_n$
+            \item $\tr A=\alpha_1+\alpha_2+\cdots+\alpha_n$
+        \end{enumerate}
+    \end{proposition}
+    \begin{definition}
+        行列$A$の\textbf{多項式}とは$E,A,A^2,\cdots,A^k$の一次結合のこと. そして, `普通の'多項式
+        \begin{equation*}
+            f(x)=a_{k}x^k+a_{k-1}x^{k-1}+\cdots+a_{1}x+a_{0}
+        \end{equation*}
+        に対して
+        \begin{equation*}
+            f(A)=a_{k}A^k+a_{k-1}A^{k-1}+\cdots+a_{1}A+a_{0}E
+        \end{equation*}
+        を多項式$f(x)$の$A$での\textbf{値}という.
+    \end{definition}
+    \begin{theorem}[Cayley-Hamiltonの定理]
+        任意の行列$A$はその特性多項式の零点. すなわち
+        \begin{equation*}
+            \Phi_A(A)=O
+        \end{equation*}
+    \end{theorem}
+    \Slash
+    \begin{property}[Frobeniusの定理]
+        $g(t)$を任意の多項式, $\alpha_1,\dots,\alpha_n$を$n$次正方行列$A$の固有値とする. このとき, $g(A)$の固有値は$g(\alpha_1),\dots,g(\alpha_n)$である.
+    \end{property}
+    \begin{property}[次元公式]
+        $W_1,W_2$をベクトル空間$V$の部分空間とする. この時次式が成り立つ.
+        \begin{equation*}
+            \dim(W_1+W_2)=\dim W_1+\dim W_2 - \dim(W_1\cap W_2)
+        \end{equation*}
+    \end{property}
+    \clearpage
+    \section{Tips}
+        ここでは覚えておいたほうがいいことをまとめてあげる. 重複も問わない.
+        \subsection{行列の相似}
+            相似な行列で不変なものはつぎである.
+            \begin{itemize}
+                \item 階数
+                \item 行列式
+                \item トレース
+                \item 固有値
+                \item 固有多項式
+            \end{itemize}
+        \subsection{連立方程式の理論}
+            $m\times n$の係数行列$A$と$n$項列ベクトル$\bm{x}$について, 斉次方程式$A\bm{x}=\bm{0}$は$n-\rank A$個の自明でない解をもつ. つまり, 解空間$\{\bm{x}\mid A\bm{x}=\bm{0}\}$の次元は$n-\rank A$.
+
+            一般の連立方程式$A\bm{x}=\bm{b}$に対して, 拡大係数行列は$\tilde{A}=[A \mid \bm{b}]$と定義されるが, このときこの連立方程式が解をもつ必要十分条件は$\rank A=\rank \tilde{A}$である.
+        
+        \subsection{トレース(trace)}
+            $\displaystyle\tr A=\sum_{i=1}^{n}a_{ii}$を$A$のトレース(対角和, 跡)という. $A$の対角成分の和である. 性質としては次の三つを抑えておけばよい.
+            \begin{equation*}
+                (1)\tr(A+B)=\tr (A)+\tr (B),\quad (2)\tr(kA)=k\hspace{1mm}\tr A\quad (3)\tr(AB)=\tr(BA).
+            \end{equation*}
+        \subsection{ユニタリ行列に関する性質}
+            $A^*\equiv \trans\overline{A}$とする. $AA^*=A^*A=E$なる$A$をユニタリ行列という. 特に$A$が実行列なら直交行列という. ユニタリ行列について, 次の四つはすべて同値である. ただし, $(\bm{x},\bm{y})=\trans\bm{x}\overline{\bm{y}}$ (標準内積)とする.
+            \begin{equation*}
+                (1)Aはユニタリ行列,\quad(2)(A\bm{x},A\bm{y})=(\bm{x},\bm{y}),\quad(3)\|A\bm{x}\|=\|\bm{x}\|,\quad(4)Aの各列ベクトルは正規直交基底
+            \end{equation*}
+        \subsection{三角行列について補足}
+            上下によらず三角行列の行列式は対角成分の積である. また, 三角化すればわかるように$A$の固有値が$\alpha_1\dots,\alpha_n$なら$A^{k}$の固有値は$\alpha_1^k,\cdots,\alpha_n^k$である. (Frobeniusの定理からもわかる.)
 \end{document}
