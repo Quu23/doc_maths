@@ -1,0 +1,103 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{ascmac}
+\usepackage{amsthm}
+\usepackage{bm}
+
+\usepackage[margin=10truemm]{geometry}
+
+% \usepackage[dvipdfmx]{hyperref}
+\begin{document}
+    \part*{第一回 線型代数 問題}
+    \subsection*{問題1}
+        次のベクトルが一次独立か一次従属かを判定する.
+        \begin{equation*}
+            \begin{pmatrix}1 \\ 2 \\ 3 \end{pmatrix}, \begin{pmatrix}4 \\ 5\\ 6\end{pmatrix}, \begin{pmatrix}7 \\ 8 \\ 9 \end{pmatrix}
+        \end{equation*}
+    \subsection*{問題2}
+        次の連立一次方程式をとく.
+        \begin{equation*}
+            (1)\left\{\begin{array}{c}
+                2x+3y+2z=4\\
+                4x+3y+2z=5\\
+                x+2y+2z=3
+            \end{array}\right.\quad 
+            (2)\left\{\begin{array}{c}
+                x+2y+3z-4w=0\\
+                x+y+z-w=0\\
+                x+3y+5z-7w=0
+            \end{array}\right.
+        \end{equation*}
+    \subsection*{問題3}
+        次の行列式を計算する.
+        \begin{equation*}
+            (1)\begin{vmatrix}
+                2 & 4 & 3 \\
+                3 & 8 & 2\\
+                2 & 8 & 6
+            \end{vmatrix}\quad
+            (2)\begin{vmatrix}
+                1 & 2 & 3 & 4\\
+                2 & 2 & 1 & 5\\
+                3 & 3 & 2 & 8\\
+                4 & 5 & 4 & 10
+            \end{vmatrix}\quad
+            (3)\begin{vmatrix}
+                1 & 100 & 65 & 98765421 & 15\\
+                0 & 8 & 23 & 15 & 31\\
+                0 & 0 & 314 & 2 & 99\\
+                0 & 0 & 0 & 0.625 & -1\\
+                0 & 0 & 0 & 0 &  5
+            \end{vmatrix}
+        \end{equation*}
+    \subsection*{問題4}
+        次の行列の積を計算する. ただし, $\bm{a},\bm{b},\bm{c}\in \mathbb{R}^3$
+        \begin{equation*}
+            (1)\begin{pmatrix}
+                1 & -2 & 3\\
+                2 & 1 & 0
+            \end{pmatrix}
+            \begin{pmatrix}
+                -2 & -1 & 1\\
+                1 & 2 & -3\\
+                4 & 0 & 3
+            \end{pmatrix}\quad 
+            (2)\begin{pmatrix}
+                1 & -1 & 0 & 0\\
+                0 & -2 & 0 & 0\\
+                0 & 0  & -2 & 3\\
+                0 & 0  & 1 & 1
+            \end{pmatrix}
+            \begin{pmatrix}
+                2 & 1 & 0 & 0\\
+                0 & 1 & 0 & 0\\
+                0 & 0  & 1 & 1\\
+                0 & 0  & 2 & -3
+            \end{pmatrix}\quad
+            (3)\begin{pmatrix}
+                \bm{a} & \bm{b} & \bm{c}
+            \end{pmatrix}
+            \begin{pmatrix}
+                x\\
+                y\\
+                z
+            \end{pmatrix}
+        \end{equation*}
+    \subsection*{問題5}
+        逆行列の掃き出し法による求め方の原理を説明せよ.
+    \subsection*{問題6}
+        次の命題を示せ.
+        \begin{equation*}
+            (1)A\subset A \quad (2)A\cap B\subset A\quad (3)A\cap A = A
+        \end{equation*}
+    \subsection*{問題7}
+        $f:\mathbb{R}\to\mathbb{R},x\mapsto \sin x$について, 次を求めよ. 
+        \begin{equation*}
+            (1)f\left([-\frac{\pi}{3},\frac{\pi}{3}]\right)\quad (2)f\left([-\frac{\pi}{2},\frac{\pi}{2}]\right)\quad (3)f\left([-2\pi,\pi]\right)\quad (4)f^{-1}([-2,0])
+        \end{equation*}
+    \subsection*{問題8}
+        写像$f:\mathbb{R}\to\mathbb{R}, x\mapsto ax+b\hspace{1mm}(a\neq 0)$は全単射であることを(定義より)示せ.
+    \subsection*{問題9}
+        写像$f:X\to Y,g:Y\to Z$がどちらも全単射であるとき, 合成写像$g\circ f:X\to Z$も全単射であることを(定義より)示せ.
+\end{document}
